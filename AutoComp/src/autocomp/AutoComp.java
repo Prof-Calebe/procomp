@@ -57,6 +57,7 @@ public class AutoComp extends javax.swing.JFrame {
         SenhaLbl.setText("Senha");
 
         UserField.setToolTipText("Digite seu TIA");
+        SenhaField.setToolTipText("Digite sua senha");
         UserField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UserFieldActionPerformed(evt);
