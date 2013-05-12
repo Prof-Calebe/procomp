@@ -107,8 +107,9 @@ public class LoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, UserField.getText()+", bem vindo!  ", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel();
             JFrame jf = (JFrame) this.getTopLevelAncestor();
-            //jf.getContentPane().removeAll();
-            //jf.getContentPane().add(menuPanel);
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 288));
+            jf.pack();
         }
         else  {JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE);
             System.out.println(PassField.getPassword());    
