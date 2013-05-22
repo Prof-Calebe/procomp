@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="AltALabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltABox" min="-2" pref="290" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltARadio" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="AltBLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltBBox" min="-2" pref="290" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="AltCLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltCBox" min="-2" pref="290" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="AltDLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltDBox" min="-2" pref="290" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="AltELabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AltEBox" min="-2" pref="290" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="IdBox" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="EnunciadoBox" min="-2" pref="344" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="IdBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="EnunciadoBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AltABox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltALabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltARadio" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AltBBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltBLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AltCBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltCLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AltDBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AltEBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AltELabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="IdBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="IdBox.setEnabled(false);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EnunciadoBox">
+    </Component>
+    <Component class="javax.swing.JTextField" name="AltABox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="AltALabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="AltBLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="B)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="AltBBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="AltCLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="AltCBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="AltDLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="D)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="AltDBox">
+    </Component>
+    <Component class="javax.swing.JLabel" name="AltELabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="AltEBox">
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="AltARadio">
+    </Component>
+  </SubComponents>
+</Form>
