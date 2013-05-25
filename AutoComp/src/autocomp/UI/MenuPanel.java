@@ -59,6 +59,11 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         ImportProfButton.setText("Importar Professor");
+        ImportProfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImportProfButtonActionPerformed(evt);
+            }
+        });
 
         CadUsuarioButton.setText("Cadastrar Usuário");
         CadUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +153,15 @@ public class MenuPanel extends javax.swing.JPanel {
             jf.setMinimumSize(questaoPanel.getPreferredSize());
             jf.pack();
     }//GEN-LAST:event_CadQuestButtonActionPerformed
+
+    private void ImportProfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportProfButtonActionPerformed
+            ImpProfPanel impProfPanel = new ImpProfPanel();
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(impProfPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, impProfPanel.getPreferredSize().height));
+            jf.setMinimumSize(impProfPanel.getPreferredSize());
+            jf.pack();      // TODO add your handling code here:
+    }//GEN-LAST:event_ImportProfButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadQuestButton;
