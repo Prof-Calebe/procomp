@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package autocomp;
+package autocomp.UI;
 
 /**
  *
@@ -26,7 +26,7 @@ public class AutoComp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel1 = new autocomp.LoginPanel();
+        loginPanel1 = new autocomp.UI.LoginPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(loginPanel1.getPreferredSize());
@@ -73,6 +73,6 @@ public class AutoComp extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private autocomp.LoginPanel loginPanel1;
+    private autocomp.UI.LoginPanel loginPanel1;
     // End of variables declaration//GEN-END:variables
 }
