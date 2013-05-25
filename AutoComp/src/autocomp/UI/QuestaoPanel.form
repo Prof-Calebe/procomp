@@ -63,7 +63,13 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="AltERadio" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="IdBox" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="IdBox" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="DificuldadeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="DIficuldadeBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -73,7 +79,7 @@
                       <Component id="SalvarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,7 +87,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="IdBox" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="IdBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DIficuldadeBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DificuldadeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -242,6 +252,22 @@
     <Component class="javax.swing.JButton" name="SalvarButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="DIficuldadeBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="F&#xe1;cil"/>
+            <StringItem index="1" value="M&#xe9;dio"/>
+            <StringItem index="2" value="Dif&#xed;cil"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DificuldadeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dificuldade"/>
       </Properties>
     </Component>
   </SubComponents>

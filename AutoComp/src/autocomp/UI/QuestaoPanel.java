@@ -48,6 +48,8 @@ public class QuestaoPanel extends javax.swing.JPanel {
         EnunciadoPane = new javax.swing.JTextPane();
         QuestaoLabel = new javax.swing.JLabel();
         SalvarButton = new javax.swing.JButton();
+        DIficuldadeBox = new javax.swing.JComboBox();
+        DificuldadeLabel = new javax.swing.JLabel();
 
         IdBox.setText("1");
 
@@ -79,6 +81,10 @@ public class QuestaoPanel extends javax.swing.JPanel {
         QuestaoLabel.setText("Questão:");
 
         SalvarButton.setText("Salvar");
+
+        DIficuldadeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fácil", "Médio", "Difícil" }));
+
+        DificuldadeLabel.setText("Dificuldade");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,18 +128,26 @@ public class QuestaoPanel extends javax.swing.JPanel {
                                     .addComponent(AltEBox, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(AltERadio))
-                                .addComponent(IdBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(IdBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(DificuldadeLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(SalvarButton)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(IdBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IdBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DificuldadeLabel))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -193,6 +207,8 @@ public class QuestaoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField AltEBox;
     private javax.swing.JLabel AltELabel;
     private javax.swing.JRadioButton AltERadio;
+    private javax.swing.JComboBox DIficuldadeBox;
+    private javax.swing.JLabel DificuldadeLabel;
     private javax.swing.JTextPane EnunciadoPane;
     private javax.swing.JTextField IdBox;
     private javax.swing.JLabel QuestaoLabel;

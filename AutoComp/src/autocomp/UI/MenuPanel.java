@@ -128,7 +128,12 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ImportAlunoButtonActionPerformed
 
     private void CadUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUsuarioButtonActionPerformed
-        // TODO add your handling code here:
+            UsuarioPanel usuarioPanel = new UsuarioPanel();
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, usuarioPanel.getPreferredSize().height));
+            jf.setMinimumSize(usuarioPanel.getPreferredSize());
+            jf.pack();
     }//GEN-LAST:event_CadUsuarioButtonActionPerformed
 
     private void ConfigProvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfigProvaButtonActionPerformed
