@@ -4,6 +4,7 @@
  */
 package autocomp;
 
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -138,7 +139,8 @@ public class MenuPanel extends javax.swing.JPanel {
             QuestaoPanel questaoPanel = new QuestaoPanel();
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
-            jf.getContentPane().add(questaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 288));
+            jf.getContentPane().add(questaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, questaoPanel.getPreferredSize().height));
+            jf.setMinimumSize(questaoPanel.getPreferredSize());
             jf.pack();
     }//GEN-LAST:event_CadQuestButtonActionPerformed
 

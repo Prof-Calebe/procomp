@@ -29,8 +29,10 @@ public class AutoComp extends javax.swing.JFrame {
         loginPanel1 = new autocomp.LoginPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(loginPanel1.getPreferredSize());
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(loginPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 288));
+        getContentPane().add(loginPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 288));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -64,6 +66,7 @@ public class AutoComp extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AutoComp().setVisible(true);
             }
