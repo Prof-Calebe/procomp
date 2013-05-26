@@ -18,7 +18,7 @@ public class LoginTest {
     public void AdicionarDuplicadoTeste() {
         String tia = "31088211";
         String senha = "123";
-        int grupo = 1;
+        int grupo = 3;
         Login l = new Login();
         l.adicionar(tia, senha, grupo);
         Assert.assertFalse(l.adicionar(tia,senha,grupo));

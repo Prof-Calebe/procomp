@@ -4,6 +4,7 @@
  */
 package autocomp.UI;
 
+import autocomp.entidades.Grupo;
 import javax.swing.JFrame;
 
 /**
@@ -15,7 +16,8 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
     /**
      * Creates new form QuestaoPanel
      */
-    public ImpAlunoPanel() {
+    public ImpAlunoPanel(Grupo g) {
+        grupo = g;
         initComponents();
     }
 
@@ -117,7 +119,7 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ArquivoButtonActionPerformed
 
     private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
-            MenuPanel menuPanel = new MenuPanel();
+            MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
@@ -134,4 +136,5 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
     private javax.swing.JButton ImportarButton;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
+    Grupo grupo;
 }

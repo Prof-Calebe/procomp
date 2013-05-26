@@ -4,6 +4,7 @@
  */
 package autocomp.UI;
 
+import autocomp.entidades.Grupo;
 import javax.swing.JFrame;
 
 /**
@@ -15,7 +16,8 @@ public class UsuarioPanel extends javax.swing.JPanel {
     /**
      * Creates new form QuestaoPanel
      */
-    public UsuarioPanel() {
+    public UsuarioPanel(Grupo g) {
+        grupo = g;
         initComponents();
     }
 
@@ -97,7 +99,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
-        MenuPanel menuPanel = new MenuPanel();
+        MenuPanel menuPanel = new MenuPanel(grupo);
         JFrame jf = (JFrame) this.getTopLevelAncestor();
         jf.getContentPane().removeAll();
         jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
@@ -114,4 +116,5 @@ public class UsuarioPanel extends javax.swing.JPanel {
     private javax.swing.JTextField TiaBox;
     private javax.swing.JLabel TiaLabel;
     // End of variables declaration//GEN-END:variables
+    Grupo grupo;
 }

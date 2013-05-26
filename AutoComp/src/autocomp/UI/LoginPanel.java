@@ -6,6 +6,7 @@ package autocomp.UI;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import logica.Grupos;
 import logica.Login;
 
 /**
@@ -107,7 +108,7 @@ public class LoginPanel extends javax.swing.JPanel {
         senha = new String(PassField.getPassword());
         if(login.autenticar(user, senha)){
             JOptionPane.showMessageDialog(null, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
-            MenuPanel menuPanel = new MenuPanel();
+            MenuPanel menuPanel = new MenuPanel(Grupos.permissoes(login.pesquisar(user).getGrupo()));
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));

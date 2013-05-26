@@ -4,8 +4,11 @@
  */
 package autocomp.UI;
 
+import autocomp.entidades.Grupo;
+import autocomp.entidades.Usuario;
 import java.awt.Dimension;
 import javax.swing.JFrame;
+import logica.Grupos;
 
 /**
  *
@@ -13,10 +16,12 @@ import javax.swing.JFrame;
  */
 public class MenuPanel extends javax.swing.JPanel {
 
+    Grupo grupo;
     /**
      * Creates new form MenuPanel
      */
-    public MenuPanel() {
+    public MenuPanel(Grupo g) {
+        grupo = g;
         initComponents();
     }
 
@@ -37,7 +42,15 @@ public class MenuPanel extends javax.swing.JPanel {
         ConfigProvaButton = new javax.swing.JButton();
         GerarProvaButton = new javax.swing.JButton();
 
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
         CadQuestButton.setText("Cadastro de Questão");
+        if(!grupo.isCadastrarQuestao())
+        CadQuestButton.setEnabled(false);
         CadQuestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadQuestButtonActionPerformed(evt);
@@ -45,6 +58,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         ConsQuestButton.setText("Consulta de Questão");
+        if(!grupo.isConsultarQuestao())
+        ConsQuestButton.setEnabled(false);
         ConsQuestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsQuestButtonActionPerformed(evt);
@@ -52,6 +67,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         ImportAlunoButton.setText("Importar Aluno");
+        if(!grupo.isImportarAlunos())
+        ImportAlunoButton.setEnabled(false);
         ImportAlunoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ImportAlunoButtonActionPerformed(evt);
@@ -59,6 +76,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         ImportProfButton.setText("Importar Professor");
+        if(!grupo.isImportarProfessores())
+        ImportProfButton.setEnabled(false);
         ImportProfButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ImportProfButtonActionPerformed(evt);
@@ -66,6 +85,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         CadUsuarioButton.setText("Cadastrar Usuário");
+        if(!grupo.isCadastrarUsuario())
+        CadUsuarioButton.setEnabled(false);
         CadUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadUsuarioButtonActionPerformed(evt);
@@ -73,6 +94,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         ConfigProvaButton.setText("Configurar Prova");
+        if(!grupo.isConfigurarProva())
+        ConfigProvaButton.setEnabled(false);
         ConfigProvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConfigProvaButtonActionPerformed(evt);
@@ -80,6 +103,8 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         GerarProvaButton.setText("Gerar Prova");
+        if(!grupo.isGerarProva())
+        GerarProvaButton.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,7 +154,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ConsQuestButtonActionPerformed
 
     private void ImportAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAlunoButtonActionPerformed
-            ImpAlunoPanel impAlunoPanel = new ImpAlunoPanel();
+            ImpAlunoPanel impAlunoPanel = new ImpAlunoPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(impAlunoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, impAlunoPanel.getPreferredSize().height));
@@ -138,7 +163,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ImportAlunoButtonActionPerformed
 
     private void CadUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadUsuarioButtonActionPerformed
-            UsuarioPanel usuarioPanel = new UsuarioPanel();
+            UsuarioPanel usuarioPanel = new UsuarioPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(usuarioPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, usuarioPanel.getPreferredSize().height));
@@ -151,7 +176,7 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ConfigProvaButtonActionPerformed
 
     private void CadQuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadQuestButtonActionPerformed
-            QuestaoPanel questaoPanel = new QuestaoPanel();
+            QuestaoPanel questaoPanel = new QuestaoPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(questaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, questaoPanel.getPreferredSize().height));
@@ -159,13 +184,17 @@ public class MenuPanel extends javax.swing.JPanel {
             jf.pack();
     }//GEN-LAST:event_CadQuestButtonActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+
+    }//GEN-LAST:event_formComponentShown
+
     private void ImportProfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportProfButtonActionPerformed
-            ImpProfPanel impProfPanel = new ImpProfPanel();
-            JFrame jf = (JFrame) this.getTopLevelAncestor();
-            jf.getContentPane().removeAll();
-            jf.getContentPane().add(impProfPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, impProfPanel.getPreferredSize().height));
-            jf.setMinimumSize(impProfPanel.getPreferredSize());
-            jf.pack();      // TODO add your handling code here:
+        ImpProfPanel impProfPanel = new ImpProfPanel(grupo);
+        JFrame jf = (JFrame) this.getTopLevelAncestor();
+        jf.getContentPane().removeAll();
+        jf.getContentPane().add(impProfPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, impProfPanel.getPreferredSize().height));
+        jf.setMinimumSize(impProfPanel.getPreferredSize());
+        jf.pack();      // TODO add your handling code here:
     }//GEN-LAST:event_ImportProfButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
