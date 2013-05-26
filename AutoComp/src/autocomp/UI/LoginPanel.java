@@ -107,7 +107,7 @@ public class LoginPanel extends javax.swing.JPanel {
         user = UserField.getText();
         senha = new String(PassField.getPassword());
         if(login.autenticar(user, senha)){
-            JOptionPane.showMessageDialog(null, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
+            JOptionPane.showMessageDialog(this, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(Grupos.permissoes(login.pesquisar(user).getGrupo()));
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();

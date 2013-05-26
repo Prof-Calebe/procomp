@@ -6,6 +6,9 @@ package autocomp.UI;
 
 import autocomp.entidades.Grupo;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import logica.Grupos;
+import logica.Login;
 
 /**
  *
@@ -43,6 +46,11 @@ public class UsuarioPanel extends javax.swing.JPanel {
         SenhaLabel.setText("Senha");
 
         SalvarButton.setText("Salvar");
+        SalvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarButtonActionPerformed(evt);
+            }
+        });
 
         GrupoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Administrador", "Editor" }));
 
@@ -106,6 +114,27 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jf.setMinimumSize(menuPanel.getPreferredSize());
         jf.pack();
     }//GEN-LAST:event_CancelarButtonActionPerformed
+
+    private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
+        String tia;
+        String senha;
+        int gru;
+        tia = TiaBox.getText();
+        senha = SenhaBox.getText();
+        gru = GrupoCombo.getSelectedIndex();
+        Login login = new Login();
+        if(login.adicionar(tia, senha, gru)){
+            JOptionPane.showMessageDialog(this, "Novo usuário adicionado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
+            MenuPanel menuPanel = new MenuPanel(grupo);
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));
+            jf.setMinimumSize(menuPanel.getPreferredSize());
+            jf.pack();          
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_SalvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelarButton;
