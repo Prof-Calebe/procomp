@@ -12,9 +12,16 @@ public class Disciplina {
     
     private int id;
     private String nome;
-    private GradeCurso gradeCurso;
+    private Curso curso;
     private Professor professor;
 
+    public Disciplina(int id, String nome,Curso curso, Professor professor){
+        this.id = id;
+        this.nome = nome;
+        this.curso = curso;
+        this.professor = professor;   
+    }
+    
     public Professor getProfessor() {
         return professor;
     }
@@ -40,12 +47,12 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public GradeCurso getGradeCurso() {
-        return gradeCurso;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setGradeCurso(GradeCurso gradeCurso) {
-        this.gradeCurso = gradeCurso;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
     
 }

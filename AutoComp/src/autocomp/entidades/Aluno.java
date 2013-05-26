@@ -15,7 +15,7 @@ public class Aluno {
     private int id;
     private String tia;
     private String nome;
-    private GradeCurso gradeCurso;
+    private Curso curso;
     private List<TurmaDisciplina> turmasDisciplinas;
     private List<Prova> provas;
 
@@ -59,11 +59,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public GradeCurso getGradeCurso() {
-        return gradeCurso;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setGradeCurso(GradeCurso gradeCurso) {
-        this.gradeCurso = gradeCurso;
+    public void setGradeCurso(Curso curso) {
+        this.curso = curso;
     }
 }

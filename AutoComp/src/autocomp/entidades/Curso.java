@@ -14,6 +14,13 @@ public class Curso {
     private String nome;
     private int semestres;
     private Usuario coordenador;
+    
+    public Curso(int id, String nome, int semestres, Usuario coordenador){
+        this.id = id;
+        this.nome = nome;
+        this.semestres = semestres;
+        this.coordenador = coordenador;
+    }
 
     public int getId() {
         return id;

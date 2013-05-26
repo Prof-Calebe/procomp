@@ -4,8 +4,15 @@
  */
 package autocomp.UI;
 
+import autocomp.entidades.Disciplina;
 import autocomp.entidades.Grupo;
+import autocomp.entidades.Usuario;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import logica.Importacao;
+import logica.Login;
+import logica.Questoes;
 
 /**
  *
@@ -56,7 +63,9 @@ public class QuestaoPanel extends javax.swing.JPanel {
         DificuldadeLabel = new javax.swing.JLabel();
         CancelarButton = new javax.swing.JButton();
 
-        IdBox.setText("1");
+        Questoes questoes = new Questoes();
+        int id = questoes.novaQuestao();
+        IdBox.setText(String.valueOf(id));
 
         AltALabel.setText("A)");
 
@@ -78,7 +87,15 @@ public class QuestaoPanel extends javax.swing.JPanel {
 
         AltCorretaGroup.add(AltERadio);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DISCIPLINA 1", "DISCIPLINA 2" }));
+        String[] nomes = Importacao.getNomeDisciplinas();
+        if(nomes == null){
+            nomes = new String[1];
+            nomes[0] = "";
+            jComboBox1.setEnabled(false);
+            SalvarButton.setEnabled(false);
+        }
+        DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);
+        jComboBox1.setModel(combo);
         jComboBox1.setActionCommand("");
 
         jScrollPane1.setViewportView(EnunciadoPane);
@@ -86,6 +103,11 @@ public class QuestaoPanel extends javax.swing.JPanel {
         QuestaoLabel.setText("Questão:");
 
         SalvarButton.setText("Salvar");
+        SalvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarButtonActionPerformed(evt);
+            }
+        });
 
         DIficuldadeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fácil", "Médio", "Difícil" }));
 
@@ -214,6 +236,53 @@ public class QuestaoPanel extends javax.swing.JPanel {
         jf.setMinimumSize(menuPanel.getPreferredSize());
         jf.pack();
     }//GEN-LAST:event_CancelarButtonActionPerformed
+
+    private void SalvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarButtonActionPerformed
+        int id;
+        String enunciado, alternativa1, alternativa2, alternativa3,
+            alternativa4, alternativa5;
+        int alternativaCorreta, dificuldade;
+        Usuario responsavel;
+        Disciplina disciplina;
+        Login login = new Login();
+        id = Integer.parseInt(IdBox.getText());
+        enunciado = EnunciadoPane.getText();
+        alternativa1 = AltABox.getText();
+        alternativa2 = AltBBox.getText();
+        alternativa3 = AltCBox.getText();
+        alternativa4 = AltDBox.getText();
+        alternativa5 = AltEBox.getText();
+        if(AltARadio.isSelected())
+            alternativaCorreta = 1;
+        else if(AltBRadio.isSelected())
+            alternativaCorreta = 2;
+        else if(AltCRadio.isSelected())
+            alternativaCorreta = 3;
+        else if(AltDRadio.isSelected())
+            alternativaCorreta = 4;
+        else 
+            alternativaCorreta = 5;
+        dificuldade = DIficuldadeBox.getSelectedIndex();
+        responsavel = login.atualUsuario();
+        disciplina = Importacao.getDisciplina(jComboBox1.getSelectedIndex());
+        Questoes questoes = new Questoes();
+        if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
+                alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
+                alternativaCorreta == -1)
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
+                alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
+            JOptionPane.showMessageDialog(this, "Nova questão adicionada com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
+            MenuPanel menuPanel = new MenuPanel(grupo);
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));
+            jf.setMinimumSize(menuPanel.getPreferredSize());
+            jf.pack();   
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_SalvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AltABox;

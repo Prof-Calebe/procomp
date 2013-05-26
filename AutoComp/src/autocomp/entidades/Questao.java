@@ -20,9 +20,25 @@ public class Questao {
     private String alternativa4;
     private String alternativa5;
     private int alternativaCorreta;
+    private int dificuldade;
     private Usuario responsavel;
-    private Date dataCriacao;
-    private Date dataAlteracao;
+    private Disciplina disciplina;
+
+    public Questao(int id, String enunciado, String alternativa1, String alternativa2, 
+                String alternativa3, String alternativa4, String alternativa5, int alternativaCorreta, 
+                int dificuldade, Usuario responsavel, Disciplina disciplina) {
+        this.id = id;
+        this.enunciado = enunciado;
+        this.alternativa1 = alternativa1;
+        this.alternativa2 = alternativa2;
+        this.alternativa3 = alternativa3;
+        this.alternativa4 = alternativa4;
+        this.alternativa5 = alternativa5;
+        this.alternativaCorreta = alternativaCorreta;
+        this.dificuldade = dificuldade;
+        this.responsavel = responsavel;
+        this.disciplina = disciplina;
+    }
 
     public int getId() {
         return id;
@@ -94,22 +110,5 @@ public class Questao {
 
     public void setResponsavel(Usuario responsavel) {
         this.responsavel = responsavel;
-    }
-
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
-    public Date getDataAlteracao() {
-        return dataAlteracao;
-    }
-
-    public void setDataAlteracao(Date dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
-    }
-    
+    }    
 }

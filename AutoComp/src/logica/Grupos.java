@@ -21,12 +21,15 @@ public final class Grupos {
         if(id == 1)
             return new Grupo(1, "administrador", true, 
                 true, true, true, true, true, true, true);
-        else if(id == 2)
-            return new Grupo(2, "editor", false, 
+        else if(id == 3)
+            return new Grupo(3, "editor", false, 
                 true, false, true, true, false, true, true);
-        else 
-            return new Grupo(3, "professor", true, 
+        else if(id == 2)
+            return new Grupo(2, "professor", true, 
                 true, true, false, false, false, false, false);
+        else 
+            return new Grupo(4, "coordenador", true, 
+                true, true, true, true, true, true, true);
     }
     
 }

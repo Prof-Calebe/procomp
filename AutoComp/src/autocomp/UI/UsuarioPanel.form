@@ -92,10 +92,11 @@
     <Component class="javax.swing.JComboBox" name="GrupoCombo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Professor"/>
-            <StringItem index="1" value="Administrador"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Administrador"/>
+            <StringItem index="1" value="Professor"/>
             <StringItem index="2" value="Editor"/>
+            <StringItem index="3" value="Coordenador"/>
           </StringArray>
         </Property>
       </Properties>

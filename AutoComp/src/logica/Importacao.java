@@ -4,6 +4,8 @@
  */
 package logica;
 
+import autocomp.entidades.Curso;
+import autocomp.entidades.Disciplina;
 import autocomp.entidades.Professor;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,18 +24,19 @@ import org.w3c.dom.NodeList;
  */
 public class Importacao {
     
-    ArrayList disciplinas, professores;
+    private static ArrayList disciplinas, professores;
     
-    public Importacao(){
+    public static boolean importar(String file){
         disciplinas = new ArrayList();
         professores = new ArrayList();
         int id, semestre;
-        String nome, professor, grade;
+        String nome, professor, grade, curso;
         Professor p;
+        Curso c;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse("prof.xml");
+            Document doc = db.parse(file);
             //Passo 1: obter o elemento raiz
             Element raiz = doc.getDocumentElement();
             //Passo 2: localizar os elementos filhos da agenda
@@ -51,6 +54,9 @@ public class Importacao {
                 NodeList listaProfessor = contato.getElementsByTagName("professor");
                 Node professorXML = listaProfessor.item(0).getFirstChild();
                 professor = professorXML.getNodeValue();
+                NodeList listaCurso = contato.getElementsByTagName("curso");
+                Node cursoXML = listaCurso.item(0).getFirstChild();
+                curso = cursoXML.getNodeValue();                
                 NodeList listaSemestre = contato.getElementsByTagName("semestre");
                 Node semestreXML = listaSemestre.item(0).getFirstChild();
                 semestre = Integer.parseInt(semestreXML.getNodeValue());
@@ -59,20 +65,22 @@ public class Importacao {
                 grade = gradeXML.getNodeValue();
                 
                 int index = procurarProfessor(professor);
-                if(index >= 0){
-                    p = new Professor(professores.size()+1, professor);
+                if(index == -1){
+                    index = professores.size();
+                    p = new Professor(index, professor);
                     professores.add(p);
                 }
                 p = (Professor) professores.get(index);
-                
+                c = Cursos.getCurso(nome);
+                disciplinas.add(new Disciplina(id-1, nome, c, p));
         }
         } catch (Exception ex) {
-            System.out.println("ERRO nessa porra");
+            return false;
         }
-
+        return true;
     }
     
-    public int procurarProfessor(String nome){
+    public static int procurarProfessor(String nome){
         int i = -1;
         for(Iterator it = professores.iterator(); it.hasNext();){
             i++;
@@ -83,7 +91,28 @@ public class Importacao {
         return -1;
     }
     
-    public static void main(String[] args){
-        new Importacao();
+    public static Disciplina getDisciplina(int id){
+        Disciplina d;
+        try{
+            d = (Disciplina) disciplinas.get(id);
+            return d;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+    
+    public static String[] getNomeDisciplinas(){
+        String[] nomes = null;
+        try{
+            nomes = new String[disciplinas.size()];
+            for(int i = 0; i < disciplinas.size(); i++){
+                nomes[i] = getDisciplina(i).getNome();
+            }
+        }
+        catch(Exception e){
+            return nomes;
+        }
+        return nomes;
     }
 }

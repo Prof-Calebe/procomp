@@ -4,7 +4,6 @@
  */
 package logica;
 
-import autocomp.entidades.Grupo;
 import autocomp.entidades.Usuario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,7 +19,8 @@ import java.util.Iterator;
  */
 public class Login implements Serializable{
    
-    private ArrayList usuarios;
+    private static ArrayList usuarios;
+    private static String atualTia;
     
     public Login(){
         if(!carregar()){
@@ -50,10 +50,16 @@ public class Login implements Serializable{
     public boolean autenticar(String tia, String senha){
          for (Iterator it = usuarios.iterator(); it.hasNext();) {
             Usuario s  = (Usuario) it.next();
-            if(s.getTia().equals(tia)&& s.getSenha().equals(senha))
+            if(s.getTia().equals(tia)&& s.getSenha().equals(senha)){
+                atualTia = tia;
                 return true;
+            }
         }       
         return false;
+    }
+    
+    public Usuario atualUsuario(){
+        return pesquisar(atualTia);
     }
     
     private boolean salvar(){

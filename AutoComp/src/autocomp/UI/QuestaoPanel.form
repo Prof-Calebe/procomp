@@ -147,11 +147,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="IdBox">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="1"/>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="IdBox.setEnabled(false);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Questoes questoes = new Questoes();&#xa;int id = questoes.novaQuestao();&#xa;IdBox.setText(String.valueOf(id));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="AltABox">
@@ -226,14 +224,14 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="DISCIPLINA 1"/>
-            <StringItem index="1" value="DISCIPLINA 2"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor" postCode="jComboBox1.setModel(combo);">
+          <StringArray count="0"/>
         </Property>
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] nomes = Importacao.getNomeDisciplinas();&#xa;if(nomes == null){&#xa;    nomes = new String[1];&#xa;    nomes[0] = &quot;&quot;;&#xa;    jComboBox1.setEnabled(false);&#xa;    SalvarButton.setEnabled(false);&#xa;}&#xa;DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -255,6 +253,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalvarButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="DIficuldadeBox">
       <Properties>

@@ -52,7 +52,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
             }
         });
 
-        GrupoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Administrador", "Editor" }));
+        GrupoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Professor", "Editor", "Coordenador" }));
 
         CancelarButton.setText("Cancelar");
         CancelarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +121,11 @@ public class UsuarioPanel extends javax.swing.JPanel {
         int gru;
         tia = TiaBox.getText();
         senha = SenhaBox.getText();
-        gru = GrupoCombo.getSelectedIndex();
+        gru = GrupoCombo.getSelectedIndex() + 1;
         Login login = new Login();
-        if(login.adicionar(tia, senha, gru)){
+        if(tia.equals(senha) && tia.equals(""))
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);    
+        else if(login.adicionar(tia, senha, gru)){
             JOptionPane.showMessageDialog(this, "Novo usuário adicionado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
