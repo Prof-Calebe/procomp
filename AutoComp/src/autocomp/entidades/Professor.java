@@ -4,11 +4,13 @@
  */
 package autocomp.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author adriano
  */
-public class Professor {
+public class Professor implements Serializable{
     
     private int id;
     private String nome;

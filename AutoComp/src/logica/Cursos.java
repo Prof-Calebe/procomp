@@ -5,12 +5,13 @@
 package logica;
 
 import autocomp.entidades.Curso;
+import java.io.Serializable;
 
 /**
  *
  * @author adriano
  */
-public final class Cursos {
+public final class Cursos implements Serializable{
     
     public static Curso getCurso(int id){
         Login l = new Login();

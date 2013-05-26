@@ -23,32 +23,50 @@ public final class Questoes implements Serializable{
     private static ArrayList questoes;
     
     public Questoes(){
-        if(!carregar()){
+       if(!carregar()){System.out.println("ERRO NE");
             questoes = new ArrayList();
         }
     }
     
     public int novaQuestao(){
-        return questoes.size()+1;
+        try{
+            return questoes.size()+1;
+        }
+        catch(Exception e){
+            return -1;
+        }
+    }
+    
+    public Questao getQuestao(int id){
+        Questao questao = null;
+        try{
+            id -= 1;
+            questao = (Questao) questoes.get(id);
+        }
+        catch(Exception e){
+            return null;
+        }
+        return questao;
     }
     
     public boolean adicionar(int id, String enunciado, String alternativa1,String alternativa2, 
             String alternativa3, String alternativa4, String alternativa5,
             int alternativaCorreta, int dificuldade, Usuario responsavel, Disciplina disciplina){
+        Questao questao;
         try{
-            Questao questao = new Questao(id, enunciado, alternativa1, alternativa2, 
+            questao = new Questao(id, enunciado, alternativa1, alternativa2, 
                     alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
                         responsavel, disciplina);
             questoes.add(questao);
             salvar();
         }
-        catch(Exception e){
+        catch(Exception e){e.printStackTrace();
             return false;
         }
         return true;
     }
     
-        private boolean salvar(){
+        public boolean salvar(){
         FileOutputStream arquivo = null;
         ObjectOutputStream out = null;
         try{
@@ -56,7 +74,7 @@ public final class Questoes implements Serializable{
             out = new ObjectOutputStream(arquivo);
             out.writeObject(questoes);
         }
-        catch(Exception e){
+        catch(Exception e){e.printStackTrace();
             return false;
         }
         finally{
@@ -65,13 +83,13 @@ public final class Questoes implements Serializable{
                 out.close();
                 return true;
             }
-            catch(Exception e){
+            catch(Exception e){e.printStackTrace();
                 return false;
             }
         }
     }
     
-    private boolean carregar(){
+    public boolean carregar(){
         FileInputStream arquivo = null;
         ObjectInputStream in = null;   
         try{
@@ -79,7 +97,7 @@ public final class Questoes implements Serializable{
             in = new ObjectInputStream(arquivo);
             questoes = (ArrayList) in.readObject();
         }
-        catch(Exception e){
+        catch(Exception e){e.printStackTrace();
             return false;
         }
         finally{
@@ -88,7 +106,7 @@ public final class Questoes implements Serializable{
                 in.close();
                 return true;
             }
-            catch(Exception e){
+            catch(Exception e){e.printStackTrace();
                 return false;
             }
         }

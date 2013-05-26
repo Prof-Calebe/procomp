@@ -4,13 +4,13 @@
  */
 package autocomp.entidades;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author 31032109
  */
-public class Questao {
+public class Questao implements Serializable{
     
     private int id;
     private String enunciado;
@@ -111,4 +111,12 @@ public class Questao {
     public void setResponsavel(Usuario responsavel) {
         this.responsavel = responsavel;
     }    
+
+    public int getDificuldade() {
+        return dificuldade;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
 }

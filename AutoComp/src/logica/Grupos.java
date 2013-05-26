@@ -5,12 +5,13 @@
 package logica;
 
 import autocomp.entidades.Grupo;
+import java.io.Serializable;
 
 /**
  *
  * @author adriano
  */
-public final class Grupos {
+public final class Grupos implements Serializable{
     
     /**
      *

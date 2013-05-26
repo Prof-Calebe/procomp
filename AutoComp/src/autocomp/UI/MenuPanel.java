@@ -150,7 +150,12 @@ public class MenuPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsQuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsQuestButtonActionPerformed
-        // TODO add your handling code here:
+            ConsQuestaoPanel consQuestaoPanel = new ConsQuestaoPanel(grupo);
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(consQuestaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, consQuestaoPanel.getPreferredSize().height));
+            jf.setMinimumSize(consQuestaoPanel.getPreferredSize());
+            jf.pack();
     }//GEN-LAST:event_ConsQuestButtonActionPerformed
 
     private void ImportAlunoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportAlunoButtonActionPerformed

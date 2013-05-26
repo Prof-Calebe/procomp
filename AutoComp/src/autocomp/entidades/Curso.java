@@ -4,11 +4,13 @@
  */
 package autocomp.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 31032109
  */
-public class Curso {
+public class Curso implements Serializable{
     
     private int id;
     private String nome;

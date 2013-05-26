@@ -7,6 +7,7 @@ package logica;
 import autocomp.entidades.Curso;
 import autocomp.entidades.Disciplina;
 import autocomp.entidades.Professor;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.xml.parsers.DocumentBuilder;
@@ -22,7 +23,7 @@ import org.w3c.dom.NodeList;
  *
  * @author adriano
  */
-public class Importacao {
+public class Importacao implements Serializable{
     
     private static ArrayList disciplinas, professores;
     
