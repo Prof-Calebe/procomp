@@ -4,24 +4,25 @@
  */
 package autocomp.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 31032109
  */
-public class Usuario {
+public class Usuario implements Serializable{
     
-    private int id;
     private String tia;
     private String senha;
-    private Grupo grupo;
+    private int grupo;
 
-    public int getId() {
-        return id;
+    public Usuario(String tia, String senha, int grupo) {
+        this.tia = tia;
+        this.senha = senha;
+        this.grupo = grupo;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
+    
 
     public String getTia() {
         return tia;
@@ -39,11 +40,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Grupo getGrupo() {
+    public int getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(Grupo grupo) {
+    public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
 }

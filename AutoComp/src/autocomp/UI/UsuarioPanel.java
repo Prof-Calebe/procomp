@@ -4,6 +4,8 @@
  */
 package autocomp.UI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author adriano
@@ -26,13 +28,13 @@ public class UsuarioPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AltCorretaGroup = new javax.swing.ButtonGroup();
         TiaBox = new javax.swing.JTextField();
         TiaLabel = new javax.swing.JLabel();
         SenhaLabel = new javax.swing.JLabel();
         SenhaBox = new javax.swing.JTextField();
         SalvarButton = new javax.swing.JButton();
         GrupoCombo = new javax.swing.JComboBox();
+        CancelarButton = new javax.swing.JButton();
 
         TiaLabel.setText("TIA");
 
@@ -40,47 +42,71 @@ public class UsuarioPanel extends javax.swing.JPanel {
 
         SalvarButton.setText("Salvar");
 
-        GrupoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Administrador", "Editor", " " }));
+        GrupoCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Professor", "Administrador", "Editor" }));
+
+        CancelarButton.setText("Cancelar");
+        CancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TiaLabel)
-                            .addComponent(SenhaLabel)
-                            .addComponent(TiaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                            .addComponent(SenhaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                            .addComponent(GrupoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(SalvarButton)))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TiaLabel)
+                    .addComponent(SenhaLabel)
+                    .addComponent(TiaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(SenhaBox, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(GrupoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CancelarButton)
+                .addGap(26, 26, 26)
+                .addComponent(SalvarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
                 .addComponent(TiaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SenhaLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SenhaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(GrupoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(SalvarButton)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SenhaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(GrupoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 101, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CancelarButton)
+                            .addComponent(SalvarButton))
+                        .addGap(32, 32, 32))))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
+        MenuPanel menuPanel = new MenuPanel();
+        JFrame jf = (JFrame) this.getTopLevelAncestor();
+        jf.getContentPane().removeAll();
+        jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
+        jf.setMinimumSize(menuPanel.getPreferredSize());
+        jf.pack();
+    }//GEN-LAST:event_CancelarButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup AltCorretaGroup;
+    private javax.swing.JButton CancelarButton;
     private javax.swing.JComboBox GrupoCombo;
     private javax.swing.JButton SalvarButton;
     private javax.swing.JTextField SenhaBox;

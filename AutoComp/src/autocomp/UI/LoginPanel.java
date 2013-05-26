@@ -6,6 +6,7 @@ package autocomp.UI;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import logica.Login;
 
 /**
  *
@@ -18,6 +19,7 @@ public class LoginPanel extends javax.swing.JPanel {
      */
     public LoginPanel() {
         initComponents();
+        login = new Login();
     }
 
     /**
@@ -103,8 +105,8 @@ public class LoginPanel extends javax.swing.JPanel {
         String user, senha; 
         user = UserField.getText();
         senha = new String(PassField.getPassword());
-        if(senha.equals("123")){
-            JOptionPane.showMessageDialog(null, UserField.getText()+", bem vindo!  ", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
+        if(login.autenticar(user, senha)){
+            JOptionPane.showMessageDialog(null, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel();
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
@@ -112,9 +114,7 @@ public class LoginPanel extends javax.swing.JPanel {
             jf.setMinimumSize(menuPanel.getPreferredSize());
             jf.pack();
         }
-        else  {JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE);
-            System.out.println(PassField.getPassword());    
-        }
+        else JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE); 
     }//GEN-LAST:event_ConectButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -126,4 +126,5 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField UserField;
     private javax.swing.JLabel UserLabel;
     // End of variables declaration//GEN-END:variables
+    private Login login;
 }

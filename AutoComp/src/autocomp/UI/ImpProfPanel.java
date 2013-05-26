@@ -4,6 +4,8 @@
  */
 package autocomp.UI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author adriano
@@ -32,6 +34,7 @@ public class ImpProfPanel extends javax.swing.JPanel {
         ImportarButton = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         ArquivoButton = new javax.swing.JButton();
+        CancelarButton = new javax.swing.JButton();
 
         ArquivoLabel.setText("Arquivo Selecionado:");
 
@@ -42,12 +45,17 @@ public class ImpProfPanel extends javax.swing.JPanel {
             }
         });
 
-        jProgressBar1.setValue(78);
-
         ArquivoButton.setText("Selecionar Arquivo");
         ArquivoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ArquivoButtonActionPerformed(evt);
+            }
+        });
+
+        CancelarButton.setText("Cancelar");
+        CancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarButtonActionPerformed(evt);
             }
         });
 
@@ -56,23 +64,23 @@ public class ImpProfPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ArquivoBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ArquivoLabel))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(ImportarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                        .addGap(115, 115, 115)))
-                .addContainerGap())
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ArquivoBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ArquivoLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(ArquivoButton)
                 .addGap(90, 90, 90))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CancelarButton)
+                .addGap(18, 18, 18)
+                .addComponent(ImportarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,14 +93,18 @@ public class ImpProfPanel extends javax.swing.JPanel {
                 .addComponent(ArquivoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(ImportarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ImportarButton)
+                    .addComponent(CancelarButton))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarButtonActionPerformed
-
+        for(int i = 1; i <= 100; i++){
+            jProgressBar1.setValue(i);
+        }
     }//GEN-LAST:event_ImportarButtonActionPerformed
 
     private void ArquivoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArquivoButtonActionPerformed
@@ -102,11 +114,21 @@ public class ImpProfPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_ArquivoButtonActionPerformed
 
+    private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
+        MenuPanel menuPanel = new MenuPanel();
+        JFrame jf = (JFrame) this.getTopLevelAncestor();
+        jf.getContentPane().removeAll();
+        jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
+        jf.setMinimumSize(menuPanel.getPreferredSize());
+        jf.pack();
+    }//GEN-LAST:event_CancelarButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ArquivoBox;
     private javax.swing.JButton ArquivoButton;
     private javax.swing.JFileChooser ArquivoChooser;
     private javax.swing.JLabel ArquivoLabel;
+    private javax.swing.JButton CancelarButton;
     private javax.swing.JButton ImportarButton;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
