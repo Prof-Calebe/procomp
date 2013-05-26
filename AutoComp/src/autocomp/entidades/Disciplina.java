@@ -13,7 +13,17 @@ public class Disciplina {
     private int id;
     private String nome;
     private GradeCurso gradeCurso;
+    private Professor professor;
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    
     public int getId() {
         return id;
     }
