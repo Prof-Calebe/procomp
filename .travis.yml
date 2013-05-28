@@ -1,1 +1,5 @@
-language:java
+language: java
+install: ant deps
+jdk:
+  - openjdk7
+  - oraclejdk7
