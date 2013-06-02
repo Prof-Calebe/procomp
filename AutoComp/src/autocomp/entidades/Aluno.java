@@ -4,7 +4,7 @@
  */
 package autocomp.entidades;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,23 +16,22 @@ public class Aluno {
     private String tia;
     private String nome;
     private Curso curso;
-    private List<TurmaDisciplina> turmasDisciplinas;
-    private List<Prova> provas;
+    private ArrayList disciplinas;
 
-    public List<TurmaDisciplina> getTurmasDisciplinas() {
-        return turmasDisciplinas;
+    public Aluno(int id, String tia, String nome, 
+            Curso curso, ArrayList disciplinas){
+        this.id = id;
+        this.tia = tia;
+        this.nome = nome;
+        this.curso = curso;
+        this.disciplinas = disciplinas;
+    }
+    public ArrayList getDisciplinas() {
+        return disciplinas;
     }
 
-    public void setTurmasDisciplinas(List<TurmaDisciplina> turmasDisciplinas) {
-        this.turmasDisciplinas = turmasDisciplinas;
-    }
-
-    public List<Prova> getProvas() {
-        return provas;
-    }
-
-    public void setProvas(List<Prova> provas) {
-        this.provas = provas;
+    public void setDisciplinas(ArrayList disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
     public int getId() {
@@ -63,7 +62,7 @@ public class Aluno {
         return curso;
     }
 
-    public void setGradeCurso(Curso curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 }

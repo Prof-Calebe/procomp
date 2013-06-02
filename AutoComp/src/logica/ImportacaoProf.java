@@ -23,10 +23,15 @@ import org.w3c.dom.NodeList;
  *
  * @author adriano
  */
-public class Importacao implements Serializable{
+public class ImportacaoProf implements Serializable{
     
     private static ArrayList disciplinas, professores;
     
+    public static boolean isImported(){
+        if(disciplinas == null)
+            return false;
+        return true;
+    }
     public static boolean importar(String file){
         disciplinas = new ArrayList();
         professores = new ArrayList();
@@ -81,7 +86,7 @@ public class Importacao implements Serializable{
         return true;
     }
     
-    public static int procurarProfessor(String nome){
+    private static int procurarProfessor(String nome){
         int i = -1;
         for(Iterator it = professores.iterator(); it.hasNext();){
             i++;
@@ -103,17 +108,32 @@ public class Importacao implements Serializable{
         }
     }
     
+    public static Disciplina getDisciplina(String disc){
+        Disciplina d = null;       
+        try{
+            String[] nomes = getNomeDisciplinas();
+            for(int i=0; i < nomes.length; i++){
+                if(disc.equals(nomes[i]))
+                    d = getDisciplina(i);
+            }
+            return d;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+    
     public static String[] getNomeDisciplinas(){
-        String[] nomes = null;
+        String[] nomes = {null};
         try{
             nomes = new String[disciplinas.size()];
             for(int i = 0; i < disciplinas.size(); i++){
                 nomes[i] = getDisciplina(i).getNome();
             }
-        }
-        catch(Exception e){
             return nomes;
         }
-        return nomes;
+        catch(Exception e){
+            return null;
+        }
     }
 }

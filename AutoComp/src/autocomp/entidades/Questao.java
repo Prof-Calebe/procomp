@@ -116,6 +116,14 @@ public class Questao implements Serializable{
         return dificuldade;
     }
 
+    public String getDificuldadeText() {
+        if(dificuldade == 0)
+            return "Fácil";
+        else if(dificuldade == 1)
+            return "Médio";
+        else return "Difícil";
+    }
+
     public Disciplina getDisciplina() {
         return disciplina;
     }

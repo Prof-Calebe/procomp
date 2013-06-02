@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="ImportAlunoButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Importar Aluno"/>
+        <Property name="text" type="java.lang.String" value="Importar Aluno x Disc."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImportAlunoButtonActionPerformed"/>
@@ -104,7 +104,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="ImportProfButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Importar Professor"/>
+        <Property name="text" type="java.lang.String" value="Importar Professor x Disc"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImportProfButtonActionPerformed"/>

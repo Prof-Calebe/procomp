@@ -7,7 +7,7 @@ package autocomp.UI;
 import autocomp.entidades.Grupo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.Importacao;
+import logica.ImportacaoProf;
 
 /**
  *
@@ -106,7 +106,7 @@ public class ImpProfPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarButtonActionPerformed
-        boolean b = Importacao.importar(ArquivoBox.getText());
+        boolean b = ImportacaoProf.importar(ArquivoBox.getText());
         for(int i = 0; i < 100; i++){
             jProgressBar1.setValue(i);
         }

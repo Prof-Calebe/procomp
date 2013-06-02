@@ -66,7 +66,7 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
-        ImportAlunoButton.setText("Importar Aluno");
+        ImportAlunoButton.setText("Importar Aluno x Disc.");
         if(!grupo.isImportarAlunos())
         ImportAlunoButton.setEnabled(false);
         ImportAlunoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
-        ImportProfButton.setText("Importar Professor");
+        ImportProfButton.setText("Importar Professor x Disc");
         if(!grupo.isImportarProfessores())
         ImportProfButton.setEnabled(false);
         ImportProfButton.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jf.getContentPane().removeAll();
         jf.getContentPane().add(impProfPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, impProfPanel.getPreferredSize().height));
         jf.setMinimumSize(impProfPanel.getPreferredSize());
-        jf.pack();      // TODO add your handling code here:
+        jf.pack();
     }//GEN-LAST:event_ImportProfButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

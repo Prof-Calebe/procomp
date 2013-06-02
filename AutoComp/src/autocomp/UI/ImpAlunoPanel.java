@@ -6,6 +6,9 @@ package autocomp.UI;
 
 import autocomp.entidades.Grupo;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import logica.ImportacaoAluno;
+import logica.ImportacaoProf;
 
 /**
  *
@@ -38,6 +41,12 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
         ArquivoButton = new javax.swing.JButton();
         CancelarButton = new javax.swing.JButton();
 
+        ArquivoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ArquivoBoxActionPerformed(evt);
+            }
+        });
+
         ArquivoLabel.setText("Arquivo Selecionado:");
 
         ImportarButton.setText("Importar");
@@ -46,8 +55,6 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
                 ImportarButtonActionPerformed(evt);
             }
         });
-
-        jProgressBar1.setValue(78);
 
         ArquivoButton.setText("Selecionar Arquivo");
         ArquivoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,8 +113,21 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarButtonActionPerformed
-        for(int i = 1; i <= 100; i++){
+        boolean b = ImportacaoAluno.importar(ArquivoBox.getText());
+        for(int i = 0; i < 100; i++){
             jProgressBar1.setValue(i);
+        }
+        if(b){
+            JOptionPane.showMessageDialog(this, "Listagem de Alunos x Disciplinas \n importada com sucesso", "Sucesso", JOptionPane.DEFAULT_OPTION);                  
+            MenuPanel menuPanel = new MenuPanel(grupo);
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
+            jf.setMinimumSize(menuPanel.getPreferredSize());
+            jf.pack();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Erro na importacao", "Erro", JOptionPane.ERROR_MESSAGE);                              
         }
     }//GEN-LAST:event_ImportarButtonActionPerformed
 
@@ -126,6 +146,10 @@ public class ImpAlunoPanel extends javax.swing.JPanel {
             jf.setMinimumSize(menuPanel.getPreferredSize());
             jf.pack(); 
     }//GEN-LAST:event_CancelarButtonActionPerformed
+
+    private void ArquivoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArquivoBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ArquivoBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ArquivoBox;

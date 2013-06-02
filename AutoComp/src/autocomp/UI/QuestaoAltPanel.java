@@ -6,6 +6,7 @@ package autocomp.UI;
 
 import autocomp.entidades.Disciplina;
 import autocomp.entidades.Grupo;
+import autocomp.entidades.Questao;
 import autocomp.entidades.Usuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -18,14 +19,15 @@ import logica.Questoes;
  *
  * @author adriano
  */
-public class QuestaoPanel extends javax.swing.JPanel {
+public class QuestaoAltPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form QuestaoPanel
      */
-    public QuestaoPanel(Grupo g) {
+    public QuestaoAltPanel(Grupo g, int id) {
         grupo = g;
         initComponents();
+        PreencheCampos(id);
     }
 
     /**
@@ -54,7 +56,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
         AltCRadio = new javax.swing.JRadioButton();
         AltDRadio = new javax.swing.JRadioButton();
         AltERadio = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        DisciplinaBox = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         EnunciadoPane = new javax.swing.JTextPane();
         QuestaoLabel = new javax.swing.JLabel();
@@ -91,12 +93,11 @@ public class QuestaoPanel extends javax.swing.JPanel {
         if(nomes == null){
             nomes = new String[1];
             nomes[0] = "";
-            jComboBox1.setEnabled(false);
-            SalvarButton.setEnabled(false);
+            DisciplinaBox.setEnabled(false);
         }
         DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);
-        jComboBox1.setModel(combo);
-        jComboBox1.setActionCommand("");
+        DisciplinaBox.setModel(combo);
+        DisciplinaBox.setActionCommand("");
 
         jScrollPane1.setViewportView(EnunciadoPane);
 
@@ -166,7 +167,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
                             .addComponent(DificuldadeLabel)
                             .addGap(18, 18, 18)
                             .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(DisciplinaBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,7 +185,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
                     .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DificuldadeLabel))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DisciplinaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(QuestaoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -228,6 +229,32 @@ public class QuestaoPanel extends javax.swing.JPanel {
         IdBox.setEnabled(false);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void PreencheCampos(int id){
+        Questoes questoes = new Questoes();
+        Questao questao = questoes.getQuestao(id);
+        IdBox.setText(String.valueOf(id));
+        EnunciadoPane.setText(questao.getEnunciado());
+        DIficuldadeBox.setSelectedIndex(questao.getDificuldade());
+        AltABox.setText(questao.getAlternativa1());
+        AltBBox.setText(questao.getAlternativa2());
+        AltCBox.setText(questao.getAlternativa3());
+        AltDBox.setText(questao.getAlternativa4());
+        AltEBox.setText(questao.getAlternativa5());
+        DisciplinaBox.setSelectedIndex(questao.getDisciplina().getId());
+        int certa = questao.getAlternativaCorreta();
+        if(certa == 1)
+            AltARadio.setSelected(true);
+        else if(certa == 2)
+            AltBRadio.setSelected(true);          
+        else if(certa == 3)
+            AltCRadio.setSelected(true);    
+        else if(certa == 4)
+            AltDRadio.setSelected(true);    
+        else
+            AltERadio.setSelected(true);    
+        }
+        
+    
     private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
         MenuPanel menuPanel = new MenuPanel(grupo);
         JFrame jf = (JFrame) this.getTopLevelAncestor();
@@ -264,15 +291,15 @@ public class QuestaoPanel extends javax.swing.JPanel {
             alternativaCorreta = 5;
         dificuldade = DIficuldadeBox.getSelectedIndex();
         responsavel = login.atualUsuario();
-        disciplina = ImportacaoProf.getDisciplina(jComboBox1.getSelectedIndex());
+        disciplina = ImportacaoProf.getDisciplina(DisciplinaBox.getSelectedIndex());
         Questoes questoes = new Questoes();
         if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
                 alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
                 alternativaCorreta == -1)
-                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
-        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante a atualização!", "Erro", JOptionPane.ERROR_MESSAGE);
+        else if(questoes.update(id, enunciado, alternativa1, alternativa2, alternativa3, 
                 alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
-            JOptionPane.showMessageDialog(this, "Nova questão adicionada com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
+            JOptionPane.showMessageDialog(this, "Questão atualizada com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
@@ -281,7 +308,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
             jf.pack();   
         }
         else
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante a atualização!", "Erro", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_SalvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -304,11 +331,11 @@ public class QuestaoPanel extends javax.swing.JPanel {
     private javax.swing.JButton CancelarButton;
     private javax.swing.JComboBox DIficuldadeBox;
     private javax.swing.JLabel DificuldadeLabel;
+    private javax.swing.JComboBox DisciplinaBox;
     private javax.swing.JTextPane EnunciadoPane;
     private javax.swing.JTextField IdBox;
     private javax.swing.JLabel QuestaoLabel;
     private javax.swing.JButton SalvarButton;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     Grupo grupo;

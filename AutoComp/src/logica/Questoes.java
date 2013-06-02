@@ -23,7 +23,7 @@ public final class Questoes implements Serializable{
     private static ArrayList questoes;
     
     public Questoes(){
-       if(!carregar()){System.out.println("ERRO NE");
+       if(!carregar()){
             questoes = new ArrayList();
         }
     }
@@ -53,6 +53,8 @@ public final class Questoes implements Serializable{
             String alternativa3, String alternativa4, String alternativa5,
             int alternativaCorreta, int dificuldade, Usuario responsavel, Disciplina disciplina){
         Questao questao;
+        if(this.getQuestao(id) != null)
+            return false;
         try{
             questao = new Questao(id, enunciado, alternativa1, alternativa2, 
                     alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
@@ -60,7 +62,24 @@ public final class Questoes implements Serializable{
             questoes.add(questao);
             salvar();
         }
-        catch(Exception e){e.printStackTrace();
+        catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean update(int id, String enunciado, String alternativa1,String alternativa2, 
+            String alternativa3, String alternativa4, String alternativa5,
+            int alternativaCorreta, int dificuldade, Usuario responsavel, Disciplina disciplina){
+        Questao questao;
+        try{
+            questao = new Questao(id, enunciado, alternativa1, alternativa2, 
+                    alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
+                        responsavel, disciplina);
+            questoes.set(id - 1, questao);
+            salvar();
+        }
+        catch(Exception e){
             return false;
         }
         return true;
@@ -74,7 +93,7 @@ public final class Questoes implements Serializable{
             out = new ObjectOutputStream(arquivo);
             out.writeObject(questoes);
         }
-        catch(Exception e){e.printStackTrace();
+        catch(Exception e){
             return false;
         }
         finally{
@@ -83,7 +102,7 @@ public final class Questoes implements Serializable{
                 out.close();
                 return true;
             }
-            catch(Exception e){e.printStackTrace();
+            catch(Exception e){
                 return false;
             }
         }
@@ -97,7 +116,7 @@ public final class Questoes implements Serializable{
             in = new ObjectInputStream(arquivo);
             questoes = (ArrayList) in.readObject();
         }
-        catch(Exception e){e.printStackTrace();
+        catch(Exception e){
             return false;
         }
         finally{
@@ -106,7 +125,7 @@ public final class Questoes implements Serializable{
                 in.close();
                 return true;
             }
-            catch(Exception e){e.printStackTrace();
+            catch(Exception e){
                 return false;
             }
         }
