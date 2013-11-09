@@ -9,7 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author cogumello
+ * @author Damião Martins
  */
 public class AlunoDAO extends GenericDAO<Aluno>{
     
