@@ -4,6 +4,7 @@
  */
 package logica;
 
+import autocomp.controller.ImportacaoProf;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

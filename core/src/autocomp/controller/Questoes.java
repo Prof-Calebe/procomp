@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package autocomp.controller;
 
-import autocomp.entidades.Disciplina;
-import autocomp.entidades.Questao;
-import autocomp.entidades.Usuario;
+import autocomp.model.Disciplina;
+import autocomp.model.Questao;
+import autocomp.model.Usuario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -56,10 +56,10 @@ public final class Questoes implements Serializable{
         if(this.getQuestao(id) != null)
             return false;
         try{
-            questao = new Questao(id, enunciado, alternativa1, alternativa2, 
-                    alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
-                        responsavel, disciplina);
-            questoes.add(questao);
+            //questao = new Questao(id, enunciado, alternativa1, alternativa2, 
+            //        alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
+            //            responsavel, disciplina);
+            questoes.add(new Questao());
             salvar();
         }
         catch(Exception e){
@@ -71,11 +71,11 @@ public final class Questoes implements Serializable{
     public boolean update(int id, String enunciado, String alternativa1,String alternativa2, 
             String alternativa3, String alternativa4, String alternativa5,
             int alternativaCorreta, int dificuldade, Usuario responsavel, Disciplina disciplina){
-        Questao questao;
+        Questao questao = new Questao();
         try{
-            questao = new Questao(id, enunciado, alternativa1, alternativa2, 
-                    alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
-                        responsavel, disciplina);
+            //questao = new Questao(id, enunciado, alternativa1, alternativa2, 
+            //        alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
+            //            responsavel, disciplina);
             questoes.set(id - 1, questao);
             salvar();
         }

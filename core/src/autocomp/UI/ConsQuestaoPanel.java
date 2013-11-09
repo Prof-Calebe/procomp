@@ -4,12 +4,12 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Grupo;
+import autocomp.model.Grupo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logica.ImportacaoProf;
-import logica.Questoes;
+import autocomp.controller.ImportacaoProf;
+import autocomp.controller.Questoes;
 
 /**
  *

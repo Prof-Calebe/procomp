@@ -2,32 +2,82 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package autocomp.entidades;
+package autocomp.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
  * @author 31032109
  */
-public class Questao implements Serializable{
+@Entity
+public class Questao implements DomainObject, Serializable{
     
-    private int id;
+    public enum QuestaoDificuldade {
+        FACIL("Fácil"), MEDIO("Médio"), DIFICIL("Difícil");
+        
+        private String text;
+        
+        private QuestaoDificuldade(String text){
+            this.text = text;
+        }
+        
+        public String getText(){
+            return this.text;
+        }
+    }
+    
+    @Id
+    @GeneratedValue
+    private int questaoId;
+    
+    @Column(nullable = false)
     private String enunciado;
+    
+    @Column(nullable = false)
     private String alternativa1;
+    
+    @Column(nullable = false)
     private String alternativa2;
+    
+    @Column(nullable = false)
     private String alternativa3;
+    
+    @Column(nullable = false)
     private String alternativa4;
+    
+    @Column(nullable = false)
     private String alternativa5;
+    
+    @Column(nullable = false)
     private int alternativaCorreta;
-    private int dificuldade;
+    
+    @Enumerated(EnumType.STRING)
+    private QuestaoDificuldade dificuldade;
+    
+    @ManyToOne
     private Usuario responsavel;
+    
+    @ManyToOne
     private Disciplina disciplina;
 
-    public Questao(int id, String enunciado, String alternativa1, String alternativa2, 
-                String alternativa3, String alternativa4, String alternativa5, int alternativaCorreta, 
-                int dificuldade, Usuario responsavel, Disciplina disciplina) {
-        this.id = id;
+    public Questao(){
+        
+    }
+    
+    public Questao(
+            String enunciado, 
+            String alternativa1, 
+            String alternativa2, 
+            String alternativa3, 
+            String alternativa4, 
+            String alternativa5, 
+            int alternativaCorreta, 
+            QuestaoDificuldade dificuldade, 
+            Usuario responsavel, 
+            Disciplina disciplina) 
+    {
         this.enunciado = enunciado;
         this.alternativa1 = alternativa1;
         this.alternativa2 = alternativa2;
@@ -41,11 +91,7 @@ public class Questao implements Serializable{
     }
 
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return questaoId;
     }
 
     public String getEnunciado() {
@@ -112,16 +158,12 @@ public class Questao implements Serializable{
         this.responsavel = responsavel;
     }    
 
-    public int getDificuldade() {
+    public QuestaoDificuldade getDificuldade() {
         return dificuldade;
     }
 
     public String getDificuldadeText() {
-        if(dificuldade == 0)
-            return "Fácil";
-        else if(dificuldade == 1)
-            return "Médio";
-        else return "Difícil";
+        return dificuldade.getText();
     }
 
     public Disciplina getDisciplina() {

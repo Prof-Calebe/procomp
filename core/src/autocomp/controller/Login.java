@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package autocomp.controller;
 
-import autocomp.entidades.Usuario;
+import autocomp.model.Grupo;
+import autocomp.model.Usuario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -30,7 +31,7 @@ public class Login implements Serializable{
     }
 
     public boolean adicionar(String tia, String senha, int grupo) {
-        Usuario user = new Usuario(tia,senha,grupo);
+        Usuario user = new Usuario(tia,senha,Grupo.ADMINISTRADOR);
         if(pesquisar(tia) != null)
             return false;
         usuarios.add(user);

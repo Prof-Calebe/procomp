@@ -4,6 +4,9 @@
  */
 package logica;
 
+import autocomp.controller.Questoes;
+import autocomp.controller.Login;
+import autocomp.controller.ImportacaoProf;
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
 import org.junit.Test;

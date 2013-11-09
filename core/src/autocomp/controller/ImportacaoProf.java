@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package autocomp.controller;
 
-import autocomp.entidades.Curso;
-import autocomp.entidades.Disciplina;
-import autocomp.entidades.Professor;
+import autocomp.model.Curso;
+import autocomp.model.Disciplina;
+import autocomp.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +37,7 @@ public class ImportacaoProf implements Serializable{
         professores = new ArrayList();
         int id, semestre;
         String nome, professor, grade, curso;
-        Professor p;
+        Usuario prof;
         Curso c;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -73,12 +73,12 @@ public class ImportacaoProf implements Serializable{
                 int index = procurarProfessor(professor);
                 if(index == -1){
                     index = professores.size();
-                    p = new Professor(index, professor);
-                    professores.add(p);
+                    prof = new Usuario();
+                    professores.add(prof);
                 }
-                p = (Professor) professores.get(index);
+                prof = (Usuario) professores.get(index);
                 c = Cursos.getCurso(nome);
-                disciplinas.add(new Disciplina(id-1, nome, c, p));
+                disciplinas.add(new Disciplina());
         }
         } catch (Exception ex) {
             return false;
@@ -90,7 +90,7 @@ public class ImportacaoProf implements Serializable{
         int i = -1;
         for(Iterator it = professores.iterator(); it.hasNext();){
             i++;
-            Professor prof = (Professor) it.next();
+            Usuario prof = (Usuario) it.next();
             if(nome.equals(prof.getNome()))              
                 return i;
         }

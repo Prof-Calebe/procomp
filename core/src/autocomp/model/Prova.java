@@ -2,31 +2,53 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package autocomp.entidades;
+package autocomp.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
 
 /**
  *
  * @author 31032109
  */
-public class Prova {
+@Entity
+public class Prova implements DomainObject, Serializable {
     
-    private int id;
+    @Id
+    @GeneratedValue
+    private int provaId;
+    
+    @Column(nullable = false)
     private String nome;
-    private Usuario responsavel;
+ 
+    @Column(columnDefinition="TEXT")
     private String descricao;
+    
+    @Temporal(value = TemporalType.DATE)
     private Date dataCriacao;
+    
+    @Temporal(value = TemporalType.DATE)
     private Date dataAlteracao;
+    
+    @ManyToOne(optional = false)
+    private Usuario responsavel;
+    
+    @OneToMany
+    @JoinTable(
+            name = "prova_questao", 
+            joinColumns = @JoinColumn(name = "provaId"), 
+            inverseJoinColumns = @JoinColumn(name = "questaoId"))
     private List<Questao> questoes;
-
-    public int getId() {
-        return id;
+    
+    public Prova(){
+        questoes = new ArrayList<>();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getProvaId() {
+        return provaId;
     }
 
     public String getNome() {
@@ -70,10 +92,14 @@ public class Prova {
     }
 
     public List<Questao> getQuestoes() {
-        return questoes;
+        return new ArrayList<>(questoes);
     }
 
     public void setQuestoes(List<Questao> questoes) {
-        this.questoes = questoes;
+        if(questoes == null){
+            questoes = new ArrayList<>();
+        }
+        this.questoes.clear();
+        this.questoes.addAll(questoes);
     }
 }

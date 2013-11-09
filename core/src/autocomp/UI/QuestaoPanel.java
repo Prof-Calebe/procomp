@@ -4,15 +4,15 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Disciplina;
-import autocomp.entidades.Grupo;
-import autocomp.entidades.Usuario;
+import autocomp.model.Disciplina;
+import autocomp.model.Grupo;
+import autocomp.model.Usuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.ImportacaoProf;
-import logica.Login;
-import logica.Questoes;
+import autocomp.controller.ImportacaoProf;
+import autocomp.controller.Login;
+import autocomp.controller.Questoes;
 
 /**
  *

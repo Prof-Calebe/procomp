@@ -4,16 +4,16 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Disciplina;
-import autocomp.entidades.Grupo;
-import autocomp.entidades.Questao;
-import autocomp.entidades.Usuario;
+import autocomp.model.Disciplina;
+import autocomp.model.Grupo;
+import autocomp.model.Questao;
+import autocomp.model.Usuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.ImportacaoProf;
-import logica.Login;
-import logica.Questoes;
+import autocomp.controller.ImportacaoProf;
+import autocomp.controller.Login;
+import autocomp.controller.Questoes;
 
 /**
  *
@@ -234,13 +234,13 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
         Questao questao = questoes.getQuestao(id);
         IdBox.setText(String.valueOf(id));
         EnunciadoPane.setText(questao.getEnunciado());
-        DIficuldadeBox.setSelectedIndex(questao.getDificuldade());
+        DIficuldadeBox.setSelectedIndex(questao.getDificuldade().ordinal());
         AltABox.setText(questao.getAlternativa1());
         AltBBox.setText(questao.getAlternativa2());
         AltCBox.setText(questao.getAlternativa3());
         AltDBox.setText(questao.getAlternativa4());
         AltEBox.setText(questao.getAlternativa5());
-        DisciplinaBox.setSelectedIndex(questao.getDisciplina().getId());
+        DisciplinaBox.setSelectedIndex(questao.getDisciplina().getDisciplinaId());
         int certa = questao.getAlternativaCorreta();
         if(certa == 1)
             AltARadio.setSelected(true);

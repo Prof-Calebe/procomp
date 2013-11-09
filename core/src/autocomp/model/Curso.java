@@ -2,34 +2,45 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package autocomp.entidades;
+package autocomp.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import org.hibernate.annotations.AccessType;
 
 /**
  *
  * @author 31032109
  */
-public class Curso implements Serializable{
+@Entity
+public class Curso implements DomainObject, Serializable{
     
-    private int id;
+    @Id
+    @GeneratedValue
+    private int cursoId;
+    
+    @Column(nullable = false)
     private String nome;
+    
+    @Column(nullable = false)
     private int semestres;
+    
+    @ManyToOne(optional = false)
+    @AccessType("field")
     private Usuario coordenador;
     
-    public Curso(int id, String nome, int semestres, Usuario coordenador){
-        this.id = id;
+    public Curso(){
+        
+    }
+    
+    public Curso(String nome, int semestres, Usuario coordenador){
         this.nome = nome;
         this.semestres = semestres;
         this.coordenador = coordenador;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public int getCursoId() {
+        return cursoId;
     }
 
     public String getNome() {

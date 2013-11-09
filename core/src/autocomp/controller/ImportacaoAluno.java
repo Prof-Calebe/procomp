@@ -2,17 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package autocomp.controller;
 
-import autocomp.entidades.Aluno;
-import autocomp.entidades.Curso;
-import autocomp.entidades.Disciplina;
+import autocomp.model.Aluno;
+import autocomp.model.Curso;
+import autocomp.model.Disciplina;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import static logica.ImportacaoProf.getNomeDisciplinas;
+import static autocomp.controller.ImportacaoProf.getNomeDisciplinas;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

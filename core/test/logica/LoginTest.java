@@ -4,6 +4,7 @@
  */
 package logica;
 
+import autocomp.controller.Login;
 import org.junit.Assert;
 import org.junit.Test;
 
