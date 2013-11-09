@@ -6,11 +6,7 @@ package autocomp.controller;
 
 import autocomp.model.Grupo;
 import autocomp.model.Usuario;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,12 +22,12 @@ public class Login implements Serializable{
     public Login(){
         if(!carregar()){
             usuarios = new ArrayList();
-            adicionar("admin", "123", 1);
+            adicionar("admin", "123", "Administrador", Grupo.ADMINISTRADOR);
         }
     }
 
-    public boolean adicionar(String tia, String senha, int grupo) {
-        Usuario user = new Usuario(tia,senha,Grupo.ADMINISTRADOR);
+    public boolean adicionar(String tia, String senha, String nome, Grupo grupo) {
+        Usuario user = new Usuario(tia, senha, nome, grupo);
         if(pesquisar(tia) != null)
             return false;
         usuarios.add(user);

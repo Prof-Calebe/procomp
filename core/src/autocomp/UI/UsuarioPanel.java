@@ -125,7 +125,8 @@ public class UsuarioPanel extends javax.swing.JPanel {
         Login login = new Login();
         if(tia.equals(senha) && tia.equals(""))
             JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);    
-        else if(login.adicionar(tia, senha, gru)){
+        // TODO: Alterar para modelo novo dados do usuário 
+        else if(login.adicionar(tia, senha, "FIXME!", Grupo.ADMINISTRADOR)){
             JOptionPane.showMessageDialog(this, "Novo usuário adicionado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package autocomp.dao;
 
 import autocomp.model.Grupo;
@@ -31,6 +27,11 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
             throw new IllegalStateException("Existe mais de um usuário cadastrado com mesmo TIA!");
         }
         return list.get(0);
+    }
+    
+    public List<Usuario> getByNome(String nome){
+        Criteria criteria = getSession().createCriteria(Usuario.class).add(Restrictions.like("nome", nome));
+        return criteria.list();
     }
     
     public List<Usuario> getByGrupo(Grupo grupo){

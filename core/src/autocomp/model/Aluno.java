@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package autocomp.model;
 
 import java.io.Serializable;
@@ -21,7 +17,7 @@ public class Aluno implements DomainObject, Serializable {
     @GeneratedValue
     private int alunoId;
     
-    @Column(nullable = false, length = 8)
+    @Column(nullable = false, length = 8, unique = true)
     private String tia;
     
     @Column(nullable = false)
@@ -41,25 +37,16 @@ public class Aluno implements DomainObject, Serializable {
     public Aluno() {
     }
 
-    public Aluno(int id, String tia, String nome,
-            Curso curso, List<Disciplina> disciplinas) {
-        this.alunoId = id;
+    public Aluno(
+            String tia, 
+            String nome,
+            Curso curso, 
+            List<Disciplina> disciplinas) 
+    {
         this.tia = tia;
         this.nome = nome;
         this.curso = curso;
         setDisciplinas(disciplinas);
-    }
-
-    public List<Disciplina> getDisciplinas() {
-        return new ArrayList<>(disciplinas);
-    }
-
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        if (disciplinas == null) {
-            disciplinas = new ArrayList<>();
-        }
-        this.disciplinas.clear();
-        this.disciplinas.addAll(disciplinas);
     }
 
     public int getAlunoId() {
@@ -88,5 +75,17 @@ public class Aluno implements DomainObject, Serializable {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+    
+    public List<Disciplina> getDisciplinas() {
+        return new ArrayList<>(disciplinas);
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        if (this.disciplinas == null) {
+            this.disciplinas = new ArrayList<>();
+        }
+        this.disciplinas.clear();
+        this.disciplinas.addAll(disciplinas);
     }
 }

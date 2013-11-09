@@ -130,7 +130,7 @@ public class ImportacaoAluno implements Serializable{
                         d = ImportacaoProf.getDisciplina(disciplina);
                         disciplinas.add(d);
                     }
-                    Aluno alun = new Aluno(id, tia, nome, c, disciplinas);
+                    Aluno alun = new Aluno(tia, nome, c, disciplinas);
                     alunos.add(alun);
                 }
             }

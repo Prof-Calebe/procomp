@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package autocomp.model;
 
 import java.io.Serializable;
@@ -34,9 +30,10 @@ public class Usuario implements DomainObject, Serializable {
     public Usuario() {
     }
 
-    public Usuario(String tia, String senha, Grupo grupo) {
+    public Usuario(String tia, String senha, String nome, Grupo grupo) {
         this.tia = tia;
         this.senha = senha;
+        this.nome = nome;
         this.grupo = grupo;
     }
 
