@@ -7,7 +7,7 @@ package autocomp.UI;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import autocomp.controller.Grupos;
-import autocomp.controller.Login;
+import autocomp.controller.UsuarioController;
 
 /**
  *
@@ -20,7 +20,7 @@ public class LoginPanel extends javax.swing.JPanel {
      */
     public LoginPanel() {
         initComponents();
-        login = new Login();
+        login = new UsuarioController();
     }
 
     /**
@@ -106,7 +106,7 @@ public class LoginPanel extends javax.swing.JPanel {
         String user, senha; 
         user = UserField.getText();
         senha = new String(PassField.getPassword());
-        if(login.autenticar(user, senha)){
+        if(login.autenticar(user, senha)!=null){
             JOptionPane.showMessageDialog(this, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(login.pesquisar(user).getGrupo());
             JFrame jf = (JFrame) this.getTopLevelAncestor();
@@ -127,5 +127,5 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField UserField;
     private javax.swing.JLabel UserLabel;
     // End of variables declaration//GEN-END:variables
-    private Login login;
+    private UsuarioController login;
 }

@@ -12,7 +12,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import autocomp.controller.ImportacaoProf;
-import autocomp.controller.Login;
+import autocomp.controller.UsuarioController;
 import autocomp.controller.Questoes;
 
 /**
@@ -271,7 +271,7 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
         int alternativaCorreta, dificuldade;
         Usuario responsavel;
         Disciplina disciplina;
-        Login login = new Login();
+        UsuarioController login = new UsuarioController();
         id = Integer.parseInt(IdBox.getText());
         enunciado = EnunciadoPane.getText();
         alternativa1 = AltABox.getText();
@@ -290,7 +290,7 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
         else 
             alternativaCorreta = 5;
         dificuldade = DIficuldadeBox.getSelectedIndex();
-        responsavel = login.atualUsuario();
+        responsavel = new Usuario();
         disciplina = ImportacaoProf.getDisciplina(DisciplinaBox.getSelectedIndex());
         Questoes questoes = new Questoes();
         if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 

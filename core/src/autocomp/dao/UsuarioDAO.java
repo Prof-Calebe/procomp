@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Damiao Martins
  */
-public class UsuarioDAO extends GenericDAO<Usuario> {
+public class UsuarioDAO extends GenericDAO<Usuario> implements IUsuarioDAO {
 
     public Usuario getById(int id) {
         return getById(Usuario.class, id);
@@ -18,6 +18,14 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 
     public List<Usuario> getAll() {
         return getAll(Usuario.class);
+    }
+    
+    public Usuario autenticar(String tia, String senha){
+        Usuario usuario = getByTIA(tia);
+        if(usuario.getSenha().equals(senha)){
+            return usuario;
+        }
+        return null;
     }
     
     public Usuario getByTIA(String tia){

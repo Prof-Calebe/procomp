@@ -8,7 +8,8 @@ import autocomp.model.Grupo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import autocomp.controller.Grupos;
-import autocomp.controller.Login;
+import autocomp.controller.UsuarioController;
+import autocomp.model.Usuario;
 
 /**
  *
@@ -122,11 +123,12 @@ public class UsuarioPanel extends javax.swing.JPanel {
         tia = TiaBox.getText();
         senha = SenhaBox.getText();
         gru = GrupoCombo.getSelectedIndex() + 1;
-        Login login = new Login();
+        UsuarioController login = new UsuarioController();
         if(tia.equals(senha) && tia.equals(""))
             JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);    
         // TODO: Alterar para modelo novo dados do usuário 
-        else if(login.adicionar(tia, senha, "FIXME!", Grupo.ADMINISTRADOR)){
+        try {
+            login.adicionar(new Usuario(tia, senha, "FIXME!", Grupo.ADMINISTRADOR));
             JOptionPane.showMessageDialog(this, "Novo usuário adicionado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
@@ -134,9 +136,10 @@ public class UsuarioPanel extends javax.swing.JPanel {
             jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));
             jf.setMinimumSize(menuPanel.getPreferredSize());
             jf.pack();          
-        }
-        else
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+            
     }//GEN-LAST:event_SalvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

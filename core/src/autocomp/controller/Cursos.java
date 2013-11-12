@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class Cursos implements Serializable{
     
     public static Curso getCurso(int id){
-        Login l = new Login();
+        UsuarioController l = new UsuarioController();
         if(id == 1){
             return new Curso();
         }
@@ -28,7 +28,7 @@ public final class Cursos implements Serializable{
     }
     
         public static Curso getCurso(String nome){
-        Login l = new Login();
+        UsuarioController l = new UsuarioController();
         if("Ciencia da Computacao".equals(nome)){
             return new Curso();
         }
