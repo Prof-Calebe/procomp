@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
  *
  * @author Damião Martins
  */
-public abstract class GenericDAO<T extends DomainObject> implements IGenericDAO<T> {
+public abstract class GenericDAO<T extends DomainObject> {
     
     private Session session;
     private Transaction currentTransaction;
@@ -31,35 +31,30 @@ public abstract class GenericDAO<T extends DomainObject> implements IGenericDAO<
         currentTransaction = null;
     }
 
-    @Override
     public void save(T object) {
         before();
         getSession().save(object);
         after();
     }
 
-    @Override
     public void delete(T object) {
         before();
         getSession().delete(object);
         after();
     }
 
-    @Override
     public void merge(T object) {
         before();
         getSession().merge(object);
         after();
     }
     
-    @Override
     public void persist(T object) {
         before();
         getSession().persist(object);
         after();
     }
 
-    @Override
     public void update(T object) {
         before();
         getSession().update(object);

@@ -20,6 +20,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> implements IUsuarioDAO {
         return getAll(Usuario.class);
     }
     
+    @Override
     public Usuario autenticar(String tia, String senha){
         Usuario usuario = getByTIA(tia);
         if(usuario.getSenha().equals(senha)){

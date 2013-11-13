@@ -5,44 +5,24 @@
 package logica;
 
 import autocomp.controller.UsuarioController;
-import autocomp.dao.IUsuarioDAO;
 import autocomp.dao.UsuarioDAO;
 import autocomp.model.Grupo;
 import autocomp.model.Usuario;
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.powermock.api.easymock.PowerMock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  *
  * @author adriano
  */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({UsuarioController.class})
 public class LoginTest {
-    
-
-    @Test
-    public void AdicionarDuplicadoTeste() {
-//        String tia = "31088211";
-//        String senha = "123";
-//        String nome = "Teste";
-//        Grupo grupo = Grupo.ADMINISTRADOR;
-//        UsuarioController l = new UsuarioController();
-//        l.adicionar(tia, senha, nome, grupo);
-//        Assert.assertFalse(l.adicionar(tia,senha,nome,grupo));
-    }
-    
-    @Test
-    public void AutenticaErrado(){
-//        String tia = "31088211";
-//        String senha = "123";
-//        String nome = "Teste";
-//        Grupo grupo = Grupo.ADMINISTRADOR;
-//        UsuarioController l = new UsuarioController();
-//        l.adicionar(tia, senha, nome, grupo);
-//        senha = "321";
-//        Assert.assertFalse(l.autenticar(tia, senha));
-    }
     
     @Test
     public void AutenticaCerto() throws Exception{
@@ -70,15 +50,4 @@ public class LoginTest {
         PowerMock.verifyAll();
     }
     
-    @Test
-    public void SalvaUsuarios(){
-//        String tia = "31088211";
-//        String senha = "123";
-//        String nome = "Teste";
-//        Grupo grupo = Grupo.ADMINISTRADOR;
-//        UsuarioController l = new UsuarioController();
-//        l.adicionar(tia, senha, nome, grupo);
-//        UsuarioController l2 = new UsuarioController();
-//        Assert.assertTrue(l2.autenticar(tia, senha));
-    }
 }

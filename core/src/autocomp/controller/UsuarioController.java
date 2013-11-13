@@ -12,7 +12,7 @@ import java.io.*;
  *
  * @author adriano
  */
-public class UsuarioController implements Serializable{
+public class UsuarioController{
    
     private UsuarioDAO usuarioDAO;
     
@@ -31,11 +31,7 @@ public class UsuarioController implements Serializable{
     }
     
     public Usuario autenticar(String tia, String senha){
-         Usuario usuario = usuarioDAO.autenticar(tia, senha);
-         if(usuario == null) {
-             throw new IllegalStateException("Não foi possível autenticar o usuário");
-         }
-         return usuario;
+         return usuarioDAO.autenticar(tia, senha);
     }
 
 }
