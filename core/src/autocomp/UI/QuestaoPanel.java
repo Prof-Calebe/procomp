@@ -10,9 +10,9 @@ import autocomp.model.Usuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import autocomp.controller.ImportacaoProf;
+import autocomp.controller.DisciplinaController;
 import autocomp.controller.UsuarioController;
-import autocomp.controller.Questoes;
+import autocomp.controller.QuestoesController;
 
 /**
  *
@@ -63,7 +63,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
         DificuldadeLabel = new javax.swing.JLabel();
         CancelarButton = new javax.swing.JButton();
 
-        Questoes questoes = new Questoes();
+        QuestoesController questoes = new QuestoesController();
         int id = questoes.novaQuestao();
         IdBox.setText(String.valueOf(id));
 
@@ -87,7 +87,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
 
         AltCorretaGroup.add(AltERadio);
 
-        String[] nomes = ImportacaoProf.getNomeDisciplinas();
+        String[] nomes = DisciplinaController.getNomeDisciplinas();
         if(nomes == null){
             nomes = new String[1];
             nomes[0] = "";
@@ -264,14 +264,14 @@ public class QuestaoPanel extends javax.swing.JPanel {
             alternativaCorreta = 5;
         dificuldade = DIficuldadeBox.getSelectedIndex();
         responsavel = new Usuario();
-        disciplina = ImportacaoProf.getDisciplina(jComboBox1.getSelectedIndex());
-        Questoes questoes = new Questoes();
-        if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
-                alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
-                alternativaCorreta == -1)
-                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
-        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
-                alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
+//        disciplina = DisciplinaController.getDisciplina(jComboBox1.getSelectedIndex());
+        QuestoesController questoes = new QuestoesController();
+//        if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
+//                alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
+//                alternativaCorreta == -1)
+//                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+//        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
+//                alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
             JOptionPane.showMessageDialog(this, "Nova questão adicionada com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();

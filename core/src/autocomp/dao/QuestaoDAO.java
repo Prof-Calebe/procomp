@@ -17,7 +17,10 @@ public class QuestaoDAO extends GenericDAO<Questao>{
     public Questao getById(int id){
         return getById(Questao.class, id);
     }
-    
+    public List<Questao> getAll(){
+        return super.getAll(Questao.class);
+    }
+
     public List<Questao> getByEnunciado(String enunciado){
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.ilike("enunciado", enunciado, MatchMode.ANYWHERE));

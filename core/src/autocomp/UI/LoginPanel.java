@@ -6,7 +6,7 @@ package autocomp.UI;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import autocomp.controller.Grupos;
+import autocomp.controller.PermissaoController;
 import autocomp.controller.UsuarioController;
 
 /**

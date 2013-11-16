@@ -8,7 +8,7 @@ import autocomp.model.Grupo;
 import autocomp.model.Usuario;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import autocomp.controller.Grupos;
+import autocomp.controller.PermissaoController;
 
 /**
  *

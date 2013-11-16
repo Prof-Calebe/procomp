@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author adriano
  */
-public final class Grupos implements Serializable{
+public class PermissaoController implements Serializable{
     
     /**
      *
