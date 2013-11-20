@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import autocomp.controller.DisciplinaController;
 import autocomp.controller.UsuarioController;
 import autocomp.controller.QuestoesController;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -65,7 +67,7 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
         DificuldadeLabel = new javax.swing.JLabel();
         CancelarButton = new javax.swing.JButton();
 
-        QuestoesController questoes = new QuestoesController();
+        autocomp.controller.QuestoesController questoes = new autocomp.controller.QuestoesController();
         int id = questoes.novaQuestao();
         IdBox.setText(String.valueOf(id));
 
@@ -89,13 +91,15 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
 
         AltCorretaGroup.add(AltERadio);
 
-        String[] nomes = DisciplinaController.getNomeDisciplinas();
-        if(nomes == null){
-            nomes = new String[1];
-            nomes[0] = "";
-            DisciplinaBox.setEnabled(false);
+        List<Questao> listaQuestoes =  new QuestoesController().getAll();
+        List<String> nomes = new ArrayList<String>();
+        for(Questao questao:listaQuestoes){
+            if(!nomes.contains(questao.getDisciplina())){
+                nomes.add(questao.getDisciplina().getNome());
+            }
         }
-        DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);
+
+        DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes.toArray());
         DisciplinaBox.setModel(combo);
         DisciplinaBox.setActionCommand("");
 
@@ -168,7 +172,7 @@ public class QuestaoAltPanel extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(DisciplinaBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CancelarButton)

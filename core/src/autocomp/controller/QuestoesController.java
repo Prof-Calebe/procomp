@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -32,6 +33,10 @@ public final class QuestoesController implements Serializable{
         catch(Exception e){
             return -1;
         }
+    }
+    
+    public List<Questao> getAll(){
+        return dao.getAll();
     }
     
     public Questao getQuestao(int id){

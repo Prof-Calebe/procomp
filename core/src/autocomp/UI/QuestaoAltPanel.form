@@ -230,7 +230,7 @@
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] nomes = logica.ImportacaoProf.getNomeDisciplinas();&#xa;if(nomes == null){&#xa;    nomes = new String[1];&#xa;    nomes[0] = &quot;&quot;;&#xa;    DisciplinaBox.setEnabled(false);&#xa;}&#xa;DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Questao&gt; listaQuestoes =  new QuestoesController().getAll();&#xa;List&lt;String&gt; nomes = new ArrayList&lt;String&gt;();&#xa;for(Questao questao:listaQuestoes){&#xa;    if(!nomes.contains(questao.getDisciplina())){&#xa;        nomes.add(questao.getDisciplina().getNome());&#xa;    }   &#xa;}&#xa;&#xa;&#xa;DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes.toArray());"/>
       </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
