@@ -78,12 +78,12 @@ public class Aluno implements DomainObject, Serializable {
     }
     
     public List<Disciplina> getDisciplinas() {
-        return new ArrayList<>(disciplinas);
+        return new ArrayList<Disciplina>(disciplinas);
     }
 
     public void setDisciplinas(List<Disciplina> disciplinas) {
         if (this.disciplinas == null) {
-            this.disciplinas = new ArrayList<>();
+            this.disciplinas = new ArrayList<Disciplina>();
         }
         this.disciplinas.clear();
         this.disciplinas.addAll(disciplinas);

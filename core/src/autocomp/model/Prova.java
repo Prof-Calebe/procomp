@@ -40,7 +40,7 @@ public class Prova implements DomainObject, Serializable {
     private List<Questao> questoes;
     
     public Prova(){
-        questoes = new ArrayList<>();
+        questoes = new ArrayList<Questao>();
     }
 
     public int getProvaId() {
@@ -88,12 +88,12 @@ public class Prova implements DomainObject, Serializable {
     }
 
     public List<Questao> getQuestoes() {
-        return new ArrayList<>(questoes);
+        return new ArrayList<Questao>(questoes);
     }
 
     public void setQuestoes(List<Questao> questoes) {
         if(questoes == null){
-            questoes = new ArrayList<>();
+            questoes = new ArrayList<Questao>();
         }
         this.questoes.clear();
         this.questoes.addAll(questoes);
