@@ -31,7 +31,7 @@ public class AlunoController implements Serializable{
     AlunoDAO dao = new AlunoDAO();
     
     
-    private List<Aluno> procurarAluno(String nome){
+    public List<Aluno> procurarAluno(String nome){
        List<Aluno> listaAlunos = dao.getByNome(nome);
        return listaAlunos;
     }
@@ -44,4 +44,5 @@ public class AlunoController implements Serializable{
         return aluno;
             
     }
+
 }

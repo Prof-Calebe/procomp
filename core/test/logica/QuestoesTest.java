@@ -11,8 +11,6 @@ import autocomp.dao.QuestaoDAO;
 import autocomp.dao.UsuarioDAO;
 import autocomp.model.Grupo;
 import autocomp.model.Questao;
-import autocomp.model.Usuario;
-import junit.framework.TestCase;
 import org.easymock.EasyMock;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -65,12 +63,5 @@ public class QuestoesTest {
         QuestoesController questoes = new QuestoesController();
         assertTrue(questoes.update(questao));
 
-        
-        
-
-
-
-
-        
     }
 }

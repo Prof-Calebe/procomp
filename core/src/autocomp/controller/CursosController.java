@@ -6,6 +6,7 @@ package autocomp.controller;
 
 import autocomp.dao.CursoDAO;
 import autocomp.model.Curso;
+import autocomp.model.Usuario;
 import java.io.Serializable;
 import java.util.List;
 
@@ -31,4 +32,5 @@ public  class CursosController implements Serializable{
        }
        return curso;
     }
+ 
 }

@@ -11,7 +11,7 @@ import org.hibernate.criterion.Restrictions;
  * @author Damião Martins
  */
 public class CursoDAO extends GenericDAO<Curso> {
-    
+        
     public Curso getById(int id){
         return getById(Curso.class, id);
     }

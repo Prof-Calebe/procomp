@@ -21,6 +21,9 @@ public class UsuarioController{
     }
 
     public void adicionar(Usuario usuario) {
+        if(usuario == null) {
+            throw new IllegalArgumentException("Usuário recebido é nulo");
+        }
         if(usuarioDAO.getByTIA(usuario.getTia()) != null)
             throw new IllegalArgumentException("Já existe usuario cadastrado com o mesmo TIA");
         usuarioDAO.save(usuario);

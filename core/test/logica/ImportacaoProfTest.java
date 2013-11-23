@@ -8,11 +8,10 @@ import autocomp.controller.DisciplinaController;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author adriano
- */
+
+
 public class ImportacaoProfTest {
+
     
 //    @Test
 //    public void testImportarNull() {
