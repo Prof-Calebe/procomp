@@ -811,7 +811,6 @@ is divided into following sections:
         </macrodef>
     </target>
     <target name="-init-macrodef-copylibs">
-	   <property name="libs.CopyLibs.classpath" value="../src/META-INF/lib/org-netbeans-modules-java-j2seproject-copylibstask.jar"/>
         <macrodef name="copylibs" uri="http://www.netbeans.org/ns/j2se-project/3">
             <attribute default="${manifest.file}" name="manifest"/>
             <element name="customize" optional="true"/>
