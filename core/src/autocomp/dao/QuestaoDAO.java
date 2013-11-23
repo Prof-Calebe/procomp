@@ -12,8 +12,12 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Damião Martins
  */
-public class QuestaoDAO extends GenericDAO<Questao>{
+public class QuestaoDAO extends GenericDAO<Questao> implements IQuestaoDAO{
+    public QuestaoDAO(){
+        super();
+    }
     
+    @Override
     public Questao getById(int id){
         return getById(Questao.class, id);
     }
@@ -43,5 +47,14 @@ public class QuestaoDAO extends GenericDAO<Questao>{
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.eq("disciplina", disciplina));
         return criteria.list();
+    }
+    
+    public Boolean updateQuestao(Questao questao){
+          try{
+            super.update(questao);
+            return true;
+          }catch(Exception e){
+              return false;
+          }
     }
 }

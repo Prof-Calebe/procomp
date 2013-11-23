@@ -20,15 +20,18 @@ import java.util.List;
  *
  * @author adriano
  */
-public final class QuestoesController implements Serializable{
+public  class QuestoesController implements Serializable{
     
-    QuestaoDAO dao = new QuestaoDAO();
+    private QuestaoDAO questaoDAO;
+    public QuestoesController(){
+        questaoDAO = new QuestaoDAO();
+    }
     
     
     
     public int novaQuestao(){
         try{
-          return dao.getAll().size();
+          return questaoDAO.getAll().size();
         }
         catch(Exception e){
             return -1;
@@ -36,14 +39,14 @@ public final class QuestoesController implements Serializable{
     }
     
     public List<Questao> getAll(){
-        return dao.getAll();
+        return questaoDAO.getAll();
     }
     
     public Questao getQuestao(int id){
         Questao questao = null;
         try{
-            id -= 1;
-            questao = (Questao) dao.getById(id);
+          
+            questao = (Questao) questaoDAO.getById(id);
         }
         catch(Exception e){
             return null;
@@ -59,7 +62,7 @@ public final class QuestoesController implements Serializable{
             questao = new Questao( enunciado, alternativa1, alternativa2, 
                     alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
                         responsavel, disciplina);
-            dao.persist(questao);
+            questaoDAO.persist(questao);
         }
         catch(Exception e){
             return false;
@@ -69,13 +72,8 @@ public final class QuestoesController implements Serializable{
     
     public boolean update(Questao questao){
 
-        try{
-            dao.update(questao);
-        }
-        catch(Exception e){
-            return false;
-        }
-        return true;
+        return  questaoDAO.updateQuestao(questao);
+       
     }
     
   
