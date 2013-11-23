@@ -16,6 +16,9 @@ public class Curso implements DomainObject, Serializable{
     private int cursoId;
     
     @Column(nullable = false)
+    private String codigo;
+    
+    @Column(nullable = false)
     private String nome;
     
     @Column(nullable = false)
@@ -29,7 +32,8 @@ public class Curso implements DomainObject, Serializable{
         
     }
     
-    public Curso(String nome, int semestres, Usuario coordenador){
+    public Curso(String codigo, String nome, int semestres, Usuario coordenador){
+        this.codigo = codigo;
         this.nome = nome;
         this.semestres = semestres;
         this.coordenador = coordenador;
@@ -37,6 +41,14 @@ public class Curso implements DomainObject, Serializable{
 
     public int getCursoId() {
         return cursoId;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -62,4 +74,5 @@ public class Curso implements DomainObject, Serializable{
     public void setCoordenador(Usuario coordenador) {
         this.coordenador = coordenador;
     }
+    
 }

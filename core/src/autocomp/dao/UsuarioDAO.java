@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Damiao Martins
  */
-public class UsuarioDAO extends GenericDAO<Usuario> implements IUsuarioDAO {
+public class UsuarioDAO extends GenericDAO<Usuario> {
 
     public Usuario getById(int id) {
         return getById(Usuario.class, id);
@@ -20,7 +20,6 @@ public class UsuarioDAO extends GenericDAO<Usuario> implements IUsuarioDAO {
         return getAll(Usuario.class);
     }
     
-    @Override
     public Usuario autenticar(String tia, String senha){
         Usuario usuario = getByTIA(tia);
         if(usuario.getSenha().equals(senha)){

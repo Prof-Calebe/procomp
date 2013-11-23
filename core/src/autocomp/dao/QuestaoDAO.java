@@ -12,12 +12,8 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Damião Martins
  */
-public class QuestaoDAO extends GenericDAO<Questao> implements IQuestaoDAO{
-    public QuestaoDAO(){
-        super();
-    }
+public class QuestaoDAO extends GenericDAO<Questao> {
     
-    @Override
     public Questao getById(int id){
         return getById(Questao.class, id);
     }
