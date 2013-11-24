@@ -106,22 +106,22 @@ public class ImpProfPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarButtonActionPerformed
-//        boolean b = DisciplinaController.importar(ArquivoBox.getText());
-//        for(int i = 0; i < 100; i++){
-//            jProgressBar1.setValue(i);
-//        }
-//        if(b){
-//            JOptionPane.showMessageDialog(this, "Listagem de Professores x Disciplinas \n importada com sucesso", "Sucesso", JOptionPane.DEFAULT_OPTION);                  
-//            MenuPanel menuPanel = new MenuPanel(grupo);
-//            JFrame jf = (JFrame) this.getTopLevelAncestor();
-//            jf.getContentPane().removeAll();
-//            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
-//            jf.setMinimumSize(menuPanel.getPreferredSize());
-//            jf.pack();
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this, "Erro na importacao", "Erro", JOptionPane.ERROR_MESSAGE);                              
-//        }
+        boolean b = controller.importar(ArquivoBox.getText());
+        for(int i = 0; i < 100; i++){
+            jProgressBar1.setValue(i);
+        }
+        if(b){
+            JOptionPane.showMessageDialog(this, "Listagem de Professores x Disciplinas \n importada com sucesso", "Sucesso", JOptionPane.DEFAULT_OPTION);                  
+            MenuPanel menuPanel = new MenuPanel(grupo);
+            JFrame jf = (JFrame) this.getTopLevelAncestor();
+            jf.getContentPane().removeAll();
+            jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, menuPanel.getPreferredSize().height));
+            jf.setMinimumSize(menuPanel.getPreferredSize());
+            jf.pack();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Erro na importacao", "Erro", JOptionPane.ERROR_MESSAGE);                              
+        }
     }//GEN-LAST:event_ImportarButtonActionPerformed
 
     private void ArquivoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArquivoButtonActionPerformed
@@ -150,4 +150,5 @@ public class ImpProfPanel extends javax.swing.JPanel {
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
     Grupo grupo;
+    DisciplinaController controller = new DisciplinaController();
 }

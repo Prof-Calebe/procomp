@@ -27,7 +27,7 @@ public class CursoDAO extends GenericDAO<Curso> {
         if(curso != null && curso.size() > 1){
             throw new IllegalStateException("Existe mais de um curso cadastrado com o mesmo código");
         }
-        return curso == null ? null : curso.get(0);
+        return curso == null || curso.isEmpty() ? null : curso.get(0);
     }
     
     public List<Curso> getByQuantidadeSemestres(int quantidade){

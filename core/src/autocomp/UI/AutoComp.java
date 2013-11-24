@@ -15,6 +15,15 @@ public class AutoComp extends javax.swing.JFrame {
      */
     public AutoComp() {
         initComponents();
+        loginPanel1 = new autocomp.UI.LoginPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(loginPanel1.getPreferredSize());
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(loginPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 288));
+
+        pack();
     }
 
     /**
@@ -68,6 +77,8 @@ public class AutoComp extends javax.swing.JFrame {
             }
         });
     }
+    
+    private autocomp.UI.LoginPanel loginPanel1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
