@@ -53,4 +53,8 @@ public class QuestaoDAO extends GenericDAO<Questao> {
               return false;
           }
     }
+
+    public List<Questao> getByParam(Questao questao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -6,7 +6,9 @@
 
 package CaseTest;
 
+import autocomp.controller.QuestoesController;
 import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
@@ -14,6 +16,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * @author Douglas
  */
 @RunWith(PowerMockRunner.class)
+@PrepareForTest({QuestoesController.class})
 public class CT05 {
     
 }

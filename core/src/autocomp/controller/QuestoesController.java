@@ -14,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -52,6 +53,19 @@ public  class QuestoesController implements Serializable{
             return null;
         }
         return questao;
+    }
+    
+    
+
+    public List<Questao> getByParam(Questao questao) {
+        List<Questao> list = new LinkedList<Questao>();
+        try{
+            list = questaoDAO.getByParam(questao);
+        }
+        catch(Exception e){
+            return null;
+        }
+        return list;
     }
     
     public boolean adicionar(int id, String enunciado, String alternativa1,String alternativa2, 
