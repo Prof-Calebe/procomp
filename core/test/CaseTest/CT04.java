@@ -45,7 +45,7 @@ public class CT04 {
     }
 
     public void applyMockReplay() {
-        PowerMock.replay(questaoDaoMock, UsuarioDAO.class);
+        PowerMock.replay(questaoDaoMock, QuestaoDAO.class);
     }
     
     @Test
