@@ -13,45 +13,55 @@ import org.hibernate.criterion.Restrictions;
  * @author Damião Martins
  */
 public class QuestaoDAO extends GenericDAO<Questao> {
-    
-    public Questao getById(int id){
+
+    public boolean add(Questao q) {
+        try {
+            this.persist(q);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public Questao getById(int id) {
         return getById(Questao.class, id);
     }
-    public List<Questao> getAll(){
+
+    public List<Questao> getAll() {
         return super.getAll(Questao.class);
     }
 
-    public List<Questao> getByEnunciado(String enunciado){
+    public List<Questao> getByEnunciado(String enunciado) {
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.ilike("enunciado", enunciado, MatchMode.ANYWHERE));
         return criteria.list();
     }
-    
-    public List<Questao> getByDificuldade(Questao.QuestaoDificuldade dificuldade){
+
+    public List<Questao> getByDificuldade(Questao.QuestaoDificuldade dificuldade) {
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.eq("dificuldade", dificuldade));
         return criteria.list();
     }
-    
-    public List<Questao> getByResponsavel(Usuario responsavel){
+
+    public List<Questao> getByResponsavel(Usuario responsavel) {
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.eq("responsavel", responsavel));
         return criteria.list();
     }
-    
-    public List<Questao> getByDisciplina(Disciplina disciplina){
+
+    public List<Questao> getByDisciplina(Disciplina disciplina) {
         Criteria criteria = getSession().createCriteria(Questao.class)
                 .add(Restrictions.eq("disciplina", disciplina));
         return criteria.list();
     }
-    
-    public Boolean updateQuestao(Questao questao){
-          try{
+
+    public Boolean updateQuestao(Questao questao) {
+        try {
             super.update(questao);
             return true;
-          }catch(Exception e){
-              return false;
-          }
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public List<Questao> getByParam(Questao questao) {

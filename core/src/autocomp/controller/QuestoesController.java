@@ -21,74 +21,61 @@ import java.util.List;
  *
  * @author adriano
  */
-public  class QuestoesController implements Serializable{
-    
+public class QuestoesController implements Serializable {
+
     private QuestaoDAO questaoDAO;
-    public QuestoesController(){
+
+    public QuestoesController() {
         questaoDAO = new QuestaoDAO();
     }
-    
-    
-    
-    public int novaQuestao(){
-        try{
-          return questaoDAO.getAll().size();
-        }
-        catch(Exception e){
+
+    public int novaQuestao() {
+        try {
+            return questaoDAO.getAll().size();
+        } catch (Exception e) {
             return -1;
         }
     }
-    
-    public List<Questao> getAll(){
+
+    public List<Questao> getAll() {
         return questaoDAO.getAll();
     }
-    
-    public Questao getQuestao(int id){
+
+    public Questao getQuestao(int id) {
         Questao questao = null;
-        try{
-          
+        try {
+
             questao = (Questao) questaoDAO.getById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
         return questao;
     }
-    
-    
 
     public List<Questao> getByParam(Questao questao) {
         List<Questao> list = new LinkedList<Questao>();
-        try{
+        try {
             list = questaoDAO.getByParam(questao);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
         return list;
     }
-    
-    public boolean adicionar(int id, String enunciado, String alternativa1,String alternativa2, 
-            String alternativa3, String alternativa4, String alternativa5,
-            int alternativaCorreta, Questao.QuestaoDificuldade dificuldade, Usuario responsavel, Disciplina disciplina){
-        Questao questao;
-        try{
-            questao = new Questao( enunciado, alternativa1, alternativa2, 
-                    alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade, 
-                        responsavel, disciplina);
-            questaoDAO.persist(questao);
-        }
-        catch(Exception e){
-            return false;
-        }
-        return true;
-    }
-    
-    public boolean update(Questao questao){
 
-        return  questaoDAO.updateQuestao(questao);
-       
+    public boolean adicionar(String enunciado, String alternativa1, String alternativa2,
+            String alternativa3, String alternativa4, String alternativa5,
+            int alternativaCorreta, Questao.QuestaoDificuldade dificuldade, Usuario responsavel, Disciplina disciplina) {
+        Questao questao;
+        questao = new Questao(enunciado, alternativa1, alternativa2,
+                alternativa3, alternativa4, alternativa5, alternativaCorreta, dificuldade,
+                responsavel, disciplina);
+        return questaoDAO.add(questao);
     }
-    
-  
+
+    public boolean update(Questao questao) {
+
+        return questaoDAO.updateQuestao(questao);
+
+    }
+
 }
