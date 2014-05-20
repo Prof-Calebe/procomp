@@ -64,46 +64,36 @@ public class UsuarioTest {
     @Test
     public void AdicionaCerto() throws Exception{
         
-        UsuarioDAO controllerMock = PowerMock.createMock(UsuarioDAO.class);
-        PowerMock.expectNew(UsuarioDAO.class).andReturn(controllerMock);
-
+        UsuarioDAO usuarioDAOMock = PowerMock.createMock(UsuarioDAO.class);
+        PowerMock.expectNew(UsuarioDAO.class).andReturn(usuarioDAOMock);
+        
         String tia = "31041949";
-        Usuario usuario = new Usuario(tia, "123456", "nome", Grupo.ADMINISTRADOR);
-
-        controllerMock.save(usuario);
-        EasyMock.expectLastCall().anyTimes();
+        Usuario usuario = new Usuario(tia, "123", "nome", Grupo.EDITOR);
+        EasyMock.anyObject();
+        EasyMock.expect(usuarioDAOMock.add(usuario)).andReturn(true);
+        EasyMock.expect(usuarioDAOMock.getByTIA(tia)).andReturn(null);
+        PowerMock.replay(usuarioDAOMock, UsuarioDAO.class);
         
-        EasyMock.expect(controllerMock.getByTIA(tia)).andReturn(null);
-        EasyMock.expect(controllerMock.getByTIA(tia)).andReturn(usuario);
-        
-        PowerMock.replay(controllerMock, UsuarioDAO.class);
-        
-        UsuarioController tested = new UsuarioController();
-        tested.adicionar(usuario);
-
-        Usuario result = tested.pesquisar(tia);
-        
-        Assert.assertEquals(usuario, result);
-
+        UsuarioController uc = new UsuarioController();
+        Assert.assertTrue(uc.adicionar(usuario));
         PowerMock.verifyAll();
     }
     
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void AdicionaErrado() throws Exception{
         
-        UsuarioDAO controllerMock = PowerMock.createMock(UsuarioDAO.class);
-        PowerMock.expectNew(UsuarioDAO.class).andReturn(controllerMock);
+        UsuarioDAO usuarioDAOMock = PowerMock.createMock(UsuarioDAO.class);
+        PowerMock.expectNew(UsuarioDAO.class).andReturn(usuarioDAOMock);
 
-        String tia = "31041949";
-        Usuario usuario = new Usuario(tia, "123456", "nome", Grupo.ADMINISTRADOR);
- 
-        EasyMock.expect(controllerMock.getByTIA(tia)).andReturn(usuario);
+        String tia = "";
+        Usuario usuario = new Usuario(tia, "123", "nome", Grupo.EDITOR);
+        EasyMock.anyObject();
+        EasyMock.expect(usuarioDAOMock.add(usuario)).andReturn(true);
+        EasyMock.expect(usuarioDAOMock.getByTIA(tia)).andReturn(null);
+        PowerMock.replay(usuarioDAOMock, UsuarioDAO.class);
         
-        PowerMock.replay(controllerMock, UsuarioDAO.class);
-        
-        UsuarioController tested = new UsuarioController();
-        tested.adicionar(usuario);
-        PowerMock.verifyAll();
+        UsuarioController uc = new UsuarioController();
+        Assert.assertFalse(uc.adicionar(usuario));
     }
   
    
