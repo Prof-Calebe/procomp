@@ -74,14 +74,14 @@ public class AlunoTest {
 
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void ImportarInvalido() throws Exception {
 
         applyMockReplay();
 
         AlunoController tested = new AlunoController();
 
-        tested.importar(null);
+        Assert.assertFalse(tested.importar(null));
 
         PowerMock.verifyAll();
     }

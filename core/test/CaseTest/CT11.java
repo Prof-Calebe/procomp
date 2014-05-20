@@ -29,7 +29,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({AlunoController.class})
-public class CT10 {
+public class CT11 {
 
     AlunoDAO alunoMock;
     CursosController cursoMock;
@@ -54,28 +54,14 @@ public class CT10 {
     }
 
     @Test
-    public void CSU05FP_01() {
-
-        alunoMock.persist(EasyMock.anyObject(Aluno.class));
-        EasyMock.expectLastCall().anyTimes();
-
-        String codCurso = "CC";
-        Usuario coordenador = new Usuario("12345678", "123456", "Coordenador", Grupo.COORDENADOR);
-        Curso curso = new Curso(codCurso, "Ciencia da computacao", 8, coordenador);
-
-        EasyMock.expect(cursoMock.getByCodigo(codCurso)).andReturn(curso);
-
-        String codDisc = "DIR";
-        Disciplina disciplina = new Disciplina(codDisc, "Direito para computação", 7, curso, coordenador);
-
-        EasyMock.expect(disciplinaMock.getByCodigo(codDisc)).andReturn(disciplina);
+    public void CSU05FE01_01() {
 
         applyMockReplay();
 
         AlunoController tested = new AlunoController();
 
-        Assert.assertTrue(tested.importar("aluno.xml"));
-
+        boolean result = tested.importar(null);
+        Assert.assertFalse(result);
         PowerMock.verifyAll();
     }
 }

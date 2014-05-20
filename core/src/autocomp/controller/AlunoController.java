@@ -51,7 +51,8 @@ public class AlunoController implements Serializable{
     public boolean importar(String file){
         
         if(file == null || file.trim().isEmpty()){
-            throw new IllegalArgumentException("Caminho invalido");
+            return false;
+            //throw new IllegalArgumentException("Caminho invalido");
         }
         
         String nome, tia, grade, codCurso, codDisciplina;
