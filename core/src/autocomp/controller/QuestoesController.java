@@ -73,9 +73,10 @@ public class QuestoesController implements Serializable {
     }
 
     public boolean update(Questao questao) {
-
+        if (questao.getEnunciado().isEmpty() || questao.getDisciplina() == null || questao.getResponsavel() == null || questao.getDisciplina() == null) {
+            return false;
+        }
         return questaoDAO.updateQuestao(questao);
-
     }
 
 }
