@@ -65,14 +65,14 @@
               <TableColumnModel selectionModel="0"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Crosshair Cursor"/>
+              <Color id="Cursor Default"/>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Questoes questoes = new Questoes();&#xa;DefaultTableModel model = new DefaultTableModel(&#xa;    new String [] {&#xa;        &quot;Id&quot;, &quot;Enunciado&quot;, &quot;DIsciplina&quot;, &quot;Dificuldade&quot;&#xa;    }, 0);&#xa;for(int i = 1; i &lt; questoes.novaQuestao(); i++)&#xa;    model.addRow(    new Object []{&#xa;        questoes.getQuestao(i).getId(),&#xa;           questoes.getQuestao(i).getEnunciado(),&#xa;           questoes.getQuestao(i).getDisciplina().getNome(),&#xa;           questoes.getQuestao(i).getDificuldadeText()&#xa;    });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="autocomp.controller.QuestoesController questoes = new autocomp.controller.QuestoesController();&#xa;DefaultTableModel model = new DefaultTableModel(&#xa;    new String [] {&#xa;        &quot;Id&quot;, &quot;Enunciado&quot;, &quot;DIsciplina&quot;, &quot;Dificuldade&quot;&#xa;    }, 0);&#xa;for(int i = 1; i &lt; questoes.novaQuestao(); i++)&#xa;    model.addRow(    new Object []{&#xa;        questoes.getQuestao(i).getId(),&#xa;           questoes.getQuestao(i).getEnunciado(),&#xa;           questoes.getQuestao(i).getDisciplina().getNome(),&#xa;           questoes.getQuestao(i).getDificuldadeText()&#xa;    });"/>
           </AuxValues>
         </Component>
       </SubComponents>
