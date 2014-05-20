@@ -4,56 +4,62 @@
  */
 package logica;
 
-import junit.framework.TestCase;
+import autocomp.controller.QuestoesController;
+import autocomp.dao.QuestaoDAO;
+import autocomp.model.Curso;
+import autocomp.model.Disciplina;
+import autocomp.model.Questao;
+import autocomp.model.Usuario;
+import org.easymock.EasyMock;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.easymock.PowerMock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  *
  * @author adriano
  */
-public class QuestoesTest extends TestCase{
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({QuestoesController.class})
+public class QuestoesTest {
 
-    @Override
-    protected void setUp() throws Exception {
-        Questoes questoes = new Questoes();
-        Login login = new Login();
-        ImportacaoProf.importar("prof.xml");
-        questoes.adicionar(1, "Direito é...", "Lado da rua", "Contrario de errado", "Materia",
-                "Todas as anteriores", "Nenhuma das anteriores", 4, 0, login.atualUsuario(),ImportacaoProf.getDisciplina(3));
-    }
-    
     @Test
-    public void testGetQuestao(){
-        int id = 0;
-        Questoes questoes = new Questoes();
-        assertNull(questoes.getQuestao(id));
+    public void testGetQuestao() throws Exception{
+         // Cria o objeto Mock da classe ClasseExemploController
+        QuestaoDAO controlerMock = PowerMock.createMock(QuestaoDAO.class);
+        // Espera que toda instanciação dessa classe seja substituída pelo objeto mockado
+        PowerMock.expectNew(QuestaoDAO.class).andReturn(controlerMock);
+        // E espera que a resposta pela chamada do método seja determinado
+        int id = 1234;
+        Questao questao = new Questao(null, null, null, null, null, null, id, Questao.QuestaoDificuldade.FACIL, null, null);
+
+        EasyMock.expect(controlerMock.getById(id)).andReturn(questao);
+        // "Executa" a configuração programada
+        PowerMock.replay( controlerMock,QuestaoDAO.class);
+        QuestoesController questoes = new QuestoesController();
+        Questao questao2 = questoes.getQuestao(id);
+        assertNotNull(questao2);
+        assertEquals(questao,questao2);
+         PowerMock.verifyAll();
     }
-    
-    @Test
-    public void testGetQuestao1(){
-        int id = 1;
-        Questoes questoes = new Questoes();
-        assertNotNull(questoes.getQuestao(id));
-    }
-    
+
     @Test 
-    public void testDuplicadaQuestao(){
-        Questoes questoes = new Questoes();
-        Login login = new Login();
-        ImportacaoProf.importar("prof.xml");
-        boolean b = questoes.adicionar(1, "Direito é...", "Lado da rua", "Contrario de errado", "Materia",
-                "Todas as anteriores", "Nenhuma das anteriores", 4, 0, login.atualUsuario(),ImportacaoProf.getDisciplina(3));
-        assertFalse(b);
-    }
-    
-    @Test 
-    public void testAlteraQuestao(){
-        Questoes questoes = new Questoes();
-        Login login = new Login();
-        ImportacaoProf.importar("prof.xml");
-        boolean b = questoes.update(1, "Direito é?", "Lado da rua", "Contrario de errado", "Materia",
-                "Todas as anteriores", "Nenhuma das anteriores", 4, 0, login.atualUsuario(),ImportacaoProf.getDisciplina(3));
-        assertTrue(b);
+    public void testAlteraQuestao() throws Exception{
+        QuestaoDAO questaoDaoMock = PowerMock.createMock(QuestaoDAO.class);
+        PowerMock.expectNew(QuestaoDAO.class).andReturn(questaoDaoMock);
+        Questao q = new Questao("Direito é?", "", "", "", "", "", 04, Questao.QuestaoDificuldade.MEDIO, new Usuario(), new Disciplina("01", "Direito", 00, new Curso(), new Usuario()));
+        //Preparação
+        EasyMock.anyObject();
+        EasyMock.expect(questaoDaoMock.updateQuestao(q)).andReturn(Boolean.TRUE);
+        PowerMock.replay(questaoDaoMock,QuestaoDAO.class);
+        //Execução
+        QuestoesController m = new QuestoesController();
+        boolean result = m.update(q);
+        //Check
+        assertEquals(true, result);
+
     }
 }

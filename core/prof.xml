@@ -2,24 +2,11 @@
 
 <mackenzie>
     <disciplina id="01">
-        <nome>Teste de Software</nome>
-        <professor>Calebe de Paula Bianchini</professor>
-        <semestre>7</semestre>
-        <curso>Ciencia da Computacao</curso>
-        <grade>2009</grade>
-    </disciplina>
-    <disciplina id="02">
-        <nome>Tecnicas de Desenvolvimento de Algoritmos</nome>
-        <professor>Valeria Farinazzo Martins</professor>
-        <semestre>2</semestre>
-        <curso>Ciencia da Computacao</curso>
-        <grade>2009</grade>
-    </disciplina>
-    <disciplina id="03">
+		<codigo>DIR</codigo>
         <nome>Direito para Computação</nome>
-        <professor>Ana Cristina Azevedo</professor>
+        <professor>31041949</professor>
         <semestre>7</semestre>
-        <curso>Ciencia da Computacao</curso>
+        <curso>CC</curso>
         <grade>2009</grade>
     </disciplina>
 </mackenzie>

@@ -4,12 +4,12 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Grupo;
+import autocomp.model.Grupo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logica.ImportacaoProf;
-import logica.Questoes;
+import autocomp.controller.DisciplinaController;
+import autocomp.controller.QuestoesController;
 
 /**
  *
@@ -40,7 +40,7 @@ public class ConsQuestaoPanel extends javax.swing.JPanel {
         VoltarButton = new javax.swing.JButton();
         AlterarButton = new javax.swing.JButton();
 
-        Questoes questoes = new Questoes();
+        QuestoesController questoes = new QuestoesController();
         DefaultTableModel model = new DefaultTableModel(
             new String [] {
                 "Id", "Enunciado", "DIsciplina", "Dificuldade"
@@ -109,16 +109,16 @@ public class ConsQuestaoPanel extends javax.swing.JPanel {
 
     private void AlterarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarButtonActionPerformed
         int id = jTable1.getSelectedRow();
-        if(!ImportacaoProf.isImported())
-            JOptionPane.showMessageDialog(this, "Não há disciplinas cadastradas!", "Erro", JOptionPane.ERROR_MESSAGE);
-        else{
-            QuestaoAltPanel questaoPanel = new QuestaoAltPanel(grupo, id + 1);
-            JFrame jf = (JFrame) this.getTopLevelAncestor();
-            jf.getContentPane().removeAll();
-            jf.getContentPane().add(questaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, questaoPanel.getPreferredSize().height));
-            jf.setMinimumSize(questaoPanel.getPreferredSize());
-            jf.pack();
-        }
+//        if(!DisciplinaController.isImported())
+//            JOptionPane.showMessageDialog(this, "Não há disciplinas cadastradas!", "Erro", JOptionPane.ERROR_MESSAGE);
+//        else{
+//            QuestaoAltPanel questaoPanel = new QuestaoAltPanel(grupo, id + 1);
+//            JFrame jf = (JFrame) this.getTopLevelAncestor();
+//            jf.getContentPane().removeAll();
+//            jf.getContentPane().add(questaoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, questaoPanel.getPreferredSize().height));
+//            jf.setMinimumSize(questaoPanel.getPreferredSize());
+//            jf.pack();
+//        }
 
     }//GEN-LAST:event_AlterarButtonActionPerformed
 

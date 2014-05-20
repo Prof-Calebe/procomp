@@ -149,7 +149,7 @@
     <Component class="javax.swing.JTextField" name="IdBox">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="IdBox.setEnabled(false);"/>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Questoes questoes = new Questoes();&#xa;int id = questoes.novaQuestao();&#xa;IdBox.setText(String.valueOf(id));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="autocomp.controller.QuestoesController questoes = new autocomp.controller.QuestoesController();&#xa;int id = questoes.novaQuestao();&#xa;IdBox.setText(String.valueOf(id));"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="AltABox">
@@ -230,7 +230,7 @@
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] nomes = logica.ImportacaoProf.getNomeDisciplinas();&#xa;if(nomes == null){&#xa;    nomes = new String[1];&#xa;    nomes[0] = &quot;&quot;;&#xa;    DisciplinaBox.setEnabled(false);&#xa;}&#xa;DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Questao&gt; listaQuestoes =  new QuestoesController().getAll();&#xa;List&lt;String&gt; nomes = new ArrayList&lt;String&gt;();&#xa;for(Questao questao:listaQuestoes){&#xa;    if(!nomes.contains(questao.getDisciplina())){&#xa;        nomes.add(questao.getDisciplina().getNome());&#xa;    }   &#xa;}&#xa;&#xa;&#xa;DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes.toArray());"/>
       </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
