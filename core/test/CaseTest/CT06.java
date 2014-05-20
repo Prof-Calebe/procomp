@@ -8,15 +8,10 @@ package CaseTest;
 
 import autocomp.controller.QuestoesController;
 import autocomp.dao.QuestaoDAO;
-import autocomp.dao.UsuarioDAO;
-import autocomp.model.Curso;
 import autocomp.model.Disciplina;
-import autocomp.model.Grupo;
 import autocomp.model.Questao;
 import autocomp.model.Usuario;
-import java.util.List;
 import org.easymock.EasyMock;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
