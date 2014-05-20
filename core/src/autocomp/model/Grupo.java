@@ -13,7 +13,8 @@ public enum Grupo{
     ADMINISTRADOR(true, true, true, true, true, true, true, true),
     EDITOR(false, false, false, false, false, false, true, true),
     PROFESSOR(false, false, false, true, true, true, false, false),
-    COORDENADOR(false, false, false, true, true, true, false, true);
+    COORDENADOR(false, false, false, true, true, true, false, true),
+    ALUNO(false, false, false, false, false, false, false, false);
     
     private boolean importarAlunos;
     private boolean importarProfessores;

@@ -1,6 +1,7 @@
 package autocomp.dao;
 
 import autocomp.model.Grupo;
+import autocomp.model.Questao;
 import autocomp.model.Usuario;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -47,4 +48,12 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         return criteria.list();
     }
 
+    public boolean add(Usuario q) {
+        try {
+            this.persist(q);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 }

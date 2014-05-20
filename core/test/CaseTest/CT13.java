@@ -11,17 +11,11 @@ package CaseTest;
  * @author Douglas
  */
 
-import autocomp.controller.AlunoController;
 import autocomp.controller.CursosController;
 import autocomp.controller.DisciplinaController;
 import autocomp.controller.UsuarioController;
 import autocomp.dao.DisciplinaDAO;
-import autocomp.model.Curso;
-import autocomp.model.Disciplina;
-import autocomp.model.Grupo;
-import autocomp.model.Usuario;
 import junit.framework.Assert;
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

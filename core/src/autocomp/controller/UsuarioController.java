@@ -12,29 +12,31 @@ import java.io.*;
  *
  * @author adriano
  */
-public class UsuarioController{
-   
+public class UsuarioController {
+
     private UsuarioDAO usuarioDAO;
-    
-    public UsuarioController(){
+
+    public UsuarioController() {
         usuarioDAO = new UsuarioDAO();
     }
 
-    public void adicionar(Usuario usuario) {
-        if(usuario == null) {
+    public boolean adicionar(Usuario usuario) {
+        if (usuario == null) {
             throw new IllegalArgumentException("Usuário recebido é nulo");
-        }
-        if(usuarioDAO.getByTIA(usuario.getTia()) != null)
+        } else if (usuario.getTia().isEmpty() || usuario.getSenha().isEmpty() || usuario.getGrupo() == null || Integer.parseInt(usuario.getTia()) == 0) {
+            return false;
+        } else if (usuarioDAO.getByTIA(usuario.getTia()) != null) {
             throw new IllegalArgumentException("Já existe usuario cadastrado com o mesmo TIA");
-        usuarioDAO.save(usuario);
+        }
+        return usuarioDAO.add(usuario);
     }
-    
-    public Usuario pesquisar(String tia){
+
+    public Usuario pesquisar(String tia) {
         return usuarioDAO.getByTIA(tia);
     }
-    
-    public Usuario autenticar(String tia, String senha){
-         return usuarioDAO.autenticar(tia, senha);
+
+    public Usuario autenticar(String tia, String senha) {
+        return usuarioDAO.autenticar(tia, senha);
     }
 
 }
