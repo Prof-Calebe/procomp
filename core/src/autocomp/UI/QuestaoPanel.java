@@ -4,22 +4,25 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Disciplina;
-import autocomp.entidades.Grupo;
-import autocomp.entidades.Usuario;
+import autocomp.model.Disciplina;
+import autocomp.model.Grupo;
+import autocomp.model.Usuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.ImportacaoProf;
-import logica.Login;
-import logica.Questoes;
+import autocomp.controller.DisciplinaController;
+import autocomp.controller.UsuarioController;
+import autocomp.controller.QuestoesController;
+import autocomp.model.Questao;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author adriano
  */
 public class QuestaoPanel extends javax.swing.JPanel {
-
+ 
     /**
      * Creates new form QuestaoPanel
      */
@@ -63,7 +66,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
         DificuldadeLabel = new javax.swing.JLabel();
         CancelarButton = new javax.swing.JButton();
 
-        Questoes questoes = new Questoes();
+        autocomp.controller.QuestoesController questoes = new autocomp.controller.QuestoesController();
         int id = questoes.novaQuestao();
         IdBox.setText(String.valueOf(id));
 
@@ -87,14 +90,15 @@ public class QuestaoPanel extends javax.swing.JPanel {
 
         AltCorretaGroup.add(AltERadio);
 
-        String[] nomes = ImportacaoProf.getNomeDisciplinas();
-        if(nomes == null){
-            nomes = new String[1];
-            nomes[0] = "";
-            jComboBox1.setEnabled(false);
-            SalvarButton.setEnabled(false);
+        List<Questao> listaQuestoes =  new QuestoesController().getAll();
+        List<String> nomes = new ArrayList<String>();
+        for(Questao questao:listaQuestoes){
+            if(!nomes.contains(questao.getDisciplina())){
+                nomes.add(questao.getDisciplina().getNome());
+            }
         }
-        DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes);
+
+        DefaultComboBoxModel combo = new DefaultComboBoxModel(nomes.toArray());
         jComboBox1.setModel(combo);
         jComboBox1.setActionCommand("");
 
@@ -167,7 +171,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(DIficuldadeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CancelarButton)
@@ -244,7 +248,7 @@ public class QuestaoPanel extends javax.swing.JPanel {
         int alternativaCorreta, dificuldade;
         Usuario responsavel;
         Disciplina disciplina;
-        Login login = new Login();
+        UsuarioController login = new UsuarioController();
         id = Integer.parseInt(IdBox.getText());
         enunciado = EnunciadoPane.getText();
         alternativa1 = AltABox.getText();
@@ -263,15 +267,15 @@ public class QuestaoPanel extends javax.swing.JPanel {
         else 
             alternativaCorreta = 5;
         dificuldade = DIficuldadeBox.getSelectedIndex();
-        responsavel = login.atualUsuario();
-        disciplina = ImportacaoProf.getDisciplina(jComboBox1.getSelectedIndex());
-        Questoes questoes = new Questoes();
-        if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
-                alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
-                alternativaCorreta == -1)
-                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
-        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
-                alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
+        responsavel = new Usuario();
+//        disciplina = DisciplinaController.getDisciplina(jComboBox1.getSelectedIndex());
+        QuestoesController questoes = new QuestoesController();
+//        if(enunciado.equals("") || alternativa1.equals("") || alternativa2.equals("") || 
+//                alternativa3.equals("") ||alternativa4.equals("") || alternativa5.equals("") || 
+//                alternativaCorreta == -1)
+//                JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+//        else if(questoes.adicionar(id, enunciado, alternativa1, alternativa2, alternativa3, 
+//                alternativa4, alternativa5, alternativaCorreta, dificuldade, responsavel, disciplina)){
             JOptionPane.showMessageDialog(this, "Nova questão adicionada com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);      
             MenuPanel menuPanel = new MenuPanel(grupo);
             JFrame jf = (JFrame) this.getTopLevelAncestor();
@@ -279,9 +283,8 @@ public class QuestaoPanel extends javax.swing.JPanel {
             jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));
             jf.setMinimumSize(menuPanel.getPreferredSize());
             jf.pack();   
-        }
-        else
-            JOptionPane.showMessageDialog(this, "Ocorreu um erro durante o cadastro!", "Erro", JOptionPane.ERROR_MESSAGE);
+        
+   
     }//GEN-LAST:event_SalvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

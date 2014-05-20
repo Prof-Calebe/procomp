@@ -4,10 +4,10 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Grupo;
+import autocomp.model.Grupo;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.ImportacaoProf;
+import autocomp.controller.DisciplinaController;
 
 /**
  *
@@ -106,7 +106,7 @@ public class ImpProfPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportarButtonActionPerformed
-        boolean b = ImportacaoProf.importar(ArquivoBox.getText());
+        boolean b = controller.importar(ArquivoBox.getText());
         for(int i = 0; i < 100; i++){
             jProgressBar1.setValue(i);
         }
@@ -150,4 +150,5 @@ public class ImpProfPanel extends javax.swing.JPanel {
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
     Grupo grupo;
+    DisciplinaController controller = new DisciplinaController();
 }
