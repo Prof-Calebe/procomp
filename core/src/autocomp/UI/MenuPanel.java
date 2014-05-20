@@ -4,11 +4,11 @@
  */
 package autocomp.UI;
 
-import autocomp.entidades.Grupo;
-import autocomp.entidades.Usuario;
+import autocomp.model.Grupo;
+import autocomp.model.Usuario;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import logica.Grupos;
+import autocomp.controller.PermissaoController;
 
 /**
  *

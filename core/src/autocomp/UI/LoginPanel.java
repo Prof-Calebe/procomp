@@ -6,8 +6,8 @@ package autocomp.UI;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import logica.Grupos;
-import logica.Login;
+import autocomp.controller.PermissaoController;
+import autocomp.controller.UsuarioController;
 
 /**
  *
@@ -20,7 +20,7 @@ public class LoginPanel extends javax.swing.JPanel {
      */
     public LoginPanel() {
         initComponents();
-        login = new Login();
+        login = new UsuarioController();
     }
 
     /**
@@ -106,9 +106,9 @@ public class LoginPanel extends javax.swing.JPanel {
         String user, senha; 
         user = UserField.getText();
         senha = new String(PassField.getPassword());
-        if(login.autenticar(user, senha)){
+        if(login.autenticar(user, senha)!=null){
             JOptionPane.showMessageDialog(this, "Bem vindo!", "Login Bem Sucedido", JOptionPane.DEFAULT_OPTION);      
-            MenuPanel menuPanel = new MenuPanel(Grupos.permissoes(login.pesquisar(user).getGrupo()));
+            MenuPanel menuPanel = new MenuPanel(login.pesquisar(user).getGrupo());
             JFrame jf = (JFrame) this.getTopLevelAncestor();
             jf.getContentPane().removeAll();
             jf.getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, menuPanel.getPreferredSize().height));
@@ -127,5 +127,5 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField UserField;
     private javax.swing.JLabel UserLabel;
     // End of variables declaration//GEN-END:variables
-    private Login login;
+    private UsuarioController login;
 }
