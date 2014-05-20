@@ -67,7 +67,8 @@ public class DisciplinaController implements Serializable {
     public boolean importar(String file) {
 
         if (file == null || file.trim().isEmpty()) {
-            throw new IllegalArgumentException("Caminho invalido");
+            return false;
+            //throw new IllegalArgumentException("Caminho invalido");
         }
 
         int semestre;

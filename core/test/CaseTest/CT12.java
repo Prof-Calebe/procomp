@@ -1,4 +1,15 @@
-package logica;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package CaseTest;
+
+/**
+ *
+ * @author Douglas
+ */
 
 import autocomp.controller.AlunoController;
 import autocomp.controller.CursosController;
@@ -20,7 +31,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DisciplinaController.class})
-public class DisciplinaTest {
+public class CT12 {
     
     DisciplinaDAO disciplinaMock;
     CursosController cursoMock;
@@ -42,18 +53,6 @@ public class DisciplinaTest {
         PowerMock.replay(disciplinaMock, DisciplinaDAO.class);
         PowerMock.replay(cursoMock, CursosController.class);
         PowerMock.replay(usuarioMock, UsuarioController.class);
-    }
-    
-    @Test
-    public void ImportarInvalido() throws Exception {
-        
-        applyMockReplay();
-
-        DisciplinaController tested = new DisciplinaController();
-
-        tested.importar(null);
-
-        PowerMock.verifyAll();
     }
 
     @Test
@@ -80,3 +79,4 @@ public class DisciplinaTest {
         PowerMock.verifyAll();
     }
 }
+

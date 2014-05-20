@@ -1,4 +1,15 @@
-package logica;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package CaseTest;
+
+/**
+ *
+ * @author Douglas
+ */
 
 import autocomp.controller.AlunoController;
 import autocomp.controller.CursosController;
@@ -20,7 +31,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({DisciplinaController.class})
-public class DisciplinaTest {
+public class CT13 {
     
     DisciplinaDAO disciplinaMock;
     CursosController cursoMock;
@@ -51,32 +62,10 @@ public class DisciplinaTest {
 
         DisciplinaController tested = new DisciplinaController();
 
-        tested.importar(null);
+        Assert.assertFalse(tested.importar(null));
 
         PowerMock.verifyAll();
     }
 
-    @Test
-    public void ImportarValido() throws Exception {
-
-        disciplinaMock.persist(EasyMock.anyObject(Disciplina.class));
-        EasyMock.expectLastCall().anyTimes();
-
-        String codCurso = "CC";
-        String tiaProf = "31041949";
-        Usuario professor = new Usuario(tiaProf, "123456", "Professor", Grupo.PROFESSOR);
-        Curso curso = new Curso(codCurso, "Ciencia da computacao", 8, professor);
-
-        EasyMock.expect(cursoMock.getByCodigo(codCurso)).andReturn(curso);
-        
-        EasyMock.expect(usuarioMock.pesquisar(tiaProf)).andReturn(professor);
-
-        applyMockReplay();
-
-        DisciplinaController tested = new DisciplinaController();
-
-        Assert.assertTrue(tested.importar("prof.xml"));
-
-        PowerMock.verifyAll();
-    }
 }
+
