@@ -5,12 +5,11 @@
 package logica;
 
 import autocomp.controller.QuestoesController;
-import autocomp.controller.UsuarioController;
-import autocomp.controller.DisciplinaController;
 import autocomp.dao.QuestaoDAO;
-import autocomp.dao.UsuarioDAO;
-import autocomp.model.Grupo;
+import autocomp.model.Curso;
+import autocomp.model.Disciplina;
 import autocomp.model.Questao;
+import autocomp.model.Usuario;
 import org.easymock.EasyMock;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -49,19 +48,18 @@ public class QuestoesTest {
 
     @Test 
     public void testAlteraQuestao() throws Exception{
-           // Cria o objeto Mock da classe ClasseExemploController
-        QuestaoDAO controlerMock = PowerMock.createMock(QuestaoDAO.class);
-        // Espera que toda instanciação dessa classe seja substituída pelo objeto mockado
-        PowerMock.expectNew(QuestaoDAO.class).andReturn(controlerMock);
-        // E espera que a resposta pela chamada do método seja determinado
-        int id = 1234;
-        Questao questao = new Questao(null, null, null, null, null, null, id, Questao.QuestaoDificuldade.FACIL, null, null);
-        
-        EasyMock.expect(controlerMock.updateQuestao(questao)).andReturn(Boolean.TRUE);
-        // "Executa" a configuração programada
-        PowerMock.replay(controlerMock, QuestaoDAO.class);
-        QuestoesController questoes = new QuestoesController();
-        assertTrue(questoes.update(questao));
+        QuestaoDAO questaoDaoMock = PowerMock.createMock(QuestaoDAO.class);
+        PowerMock.expectNew(QuestaoDAO.class).andReturn(questaoDaoMock);
+        Questao q = new Questao("Direito é?", "", "", "", "", "", 04, Questao.QuestaoDificuldade.MEDIO, new Usuario(), new Disciplina("01", "Direito", 00, new Curso(), new Usuario()));
+        //Preparação
+        EasyMock.anyObject();
+        EasyMock.expect(questaoDaoMock.updateQuestao(q)).andReturn(Boolean.TRUE);
+        PowerMock.replay(questaoDaoMock,QuestaoDAO.class);
+        //Execução
+        QuestoesController m = new QuestoesController();
+        boolean result = m.update(q);
+        //Check
+        assertEquals(true, result);
 
     }
 }
